@@ -1,0 +1,1 @@
+var a={labels:["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz"],datasets:[{label:"Kitap",backgroundColor:"rgba(75,192,192,0.4)",borderColor:"rgba(75,192,192,1)",borderWidth:1,data:[65,59,80,81,56,55,40]}]},t=document.getElementById("myChart"),e={scales:{yAxes:[{ticks:{beginAtZero:!0}}]}};new Chart(t,{type:"line",data:a,options:e});

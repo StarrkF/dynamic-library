@@ -1,0 +1,24 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-4ed993c7.js",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-378e6984.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.js": {
+    "css": [
+      "assets/app-378e6984.css"
+    ],
+    "file": "assets/app-622e5613.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/js/chart.js": {
+    "file": "assets/chart-eca509e2.js",
+    "isEntry": true,
+    "src": "resources/js/chart.js"
+  }
+}
