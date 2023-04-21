@@ -1,28 +1,34 @@
-var data = {
-    labels: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz"],
-    datasets: [
-      {
-        label: "Kitap",
-        backgroundColor: "rgba(75,192,192,0.4)",
-        borderColor: "rgba(75,192,192,1)",
-        borderWidth: 1,
-        data: [65, 59, 80, 81, 56, 55, 40]
-      }
-    ]
-  };
-  var ctx = document.getElementById('myChart');
+import useConfig from './config';
 
-  var options = {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
-    }
-  };
-  var myChart = new Chart(ctx, {
-    type: 'line',
-    data: data,
-    options: options
-  });
+const { index, show, store, update, destroy, colorPallete, darkerColors, randomColor } = useConfig();
+const chartData = {}
+
+const getChart = async () => {
+    let response = await index('/chart')
+    chartData.value = response
+    updateChart()
+}
+
+getChart()
+
+const data = {}
+
+function updateChart() {
+    data.labels = chartData.value.map(item => item.name);
+    const backgroundColors = randomColor(chartData.value.length);
+    const borderColors = darkerColors(backgroundColors, 20);
+    data.datasets = [{
+      label: "Tür / Kitap Sayısı",
+      data: chartData.value.map(item => item.books_count),
+      backgroundColor: backgroundColors,
+      borderColor: '#000',
+      borderWidth: 1
+    }];
+  }
+
+var ctx = document.getElementById('myChart');
+
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: data,
+});

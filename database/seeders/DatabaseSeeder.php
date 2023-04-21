@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\ListType;
 use App\Models\Type;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,38 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $types = [
-            'Roman/Hikaye',
-            'Araştırma',
-            'Sosyoloji/felfese',
-            'Din',
-            'Tarih',
-            'Edebiyat',
-            'Klasik',
-            'Hukuk',
-            'İngilizce',
-            'Dil',
-            'Dergi',
-        ];
-
-        $list_types = [
-            'Kütüphane',
-            'Alınacaklar',
-            'Annem',
-        ];
-
-        foreach($types as $type)
-        {
-            Type::create([
-                'name' => $type
-            ]);
-        }
-
-        foreach($list_types as $list)
-        {
-            ListType::create([
-                'name' => $list
-            ]);
-        }
+       User::create([
+        'name' => 'Betül',
+        'email' => 'betul@mail',
+        'password' => '12345',
+       ]);
     }
 }

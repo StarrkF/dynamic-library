@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\ListType;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -15,9 +14,10 @@ class BookController extends Controller
     public function index()
     {
         $types = Type::get();
-        $list_types = ListType::get();
+        $list_types = config('constant.books.list_types');
         $statuses = config('constant.books.status');
-        $books = Book::with('type', 'list_type')->get();
+        $perPage = request('perPage', 50);
+        $books = Book::with('type')->filter()->paginate($perPage);
         return view('pages.books', compact('books', 'types', 'list_types', 'statuses'));
     }
 
@@ -37,6 +37,10 @@ class BookController extends Controller
         try {
             Book::create([
                 'name' => $request->name,
+                'author' => $request->author,
+                'publisher' => $request->publisher,
+                'page_count' => $request->page_count,
+                'in_library' => $request->in_library,
                 'status' => $request->status,
                 'type_id' => $request->type_id,
                 'list_type_id' => $request->list_type_id,
@@ -71,6 +75,10 @@ class BookController extends Controller
     {
         $update = Book::where('id', $id)->update([
             'name' => $request->name,
+            'author' => $request->author,
+            'publisher' => $request->publisher,
+            'page_count' => $request->page_count,
+            'in_library' => $request->in_library,
             'status' => $request->status,
             'type_id' => $request->type_id,
             'list_type_id' => $request->list_type_id,
