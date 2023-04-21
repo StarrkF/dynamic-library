@@ -1,7 +1,8 @@
 import '../chart'
 
 const url = new URL(window.location.href);
-initFilters(['byType', 'byStatus', 'byLibrary', 'byListType',  'search', 'perPAge'])
+
+initFilters(['byType', 'byStatus', 'byLibrary', 'byListType',  'search', 'perPage'])
 
 $('.form-filter').change(function () {
     updateUrlParameter(this.id, this.value);
@@ -10,6 +11,10 @@ $('.form-filter').change(function () {
 $('#searchButton').click(function(){
     updateUrlParameter('search', $('#search').val());
 })
+
+$(document).on("click", ".orderBy", function() {
+    updateUrlParameter('orderBy', this.id);
+});
 
 $('#search').on('keydown', function(e){
     if (e.key === 'Enter') {
@@ -25,6 +30,7 @@ function updateUrlParameter(key, value) {
     key ? url.searchParams.set(key, value) : '';
     window.location.href = url.toString();
 }
+
 
 function initFilters(elements) {
     elements.map(item => {

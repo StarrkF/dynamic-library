@@ -12,13 +12,13 @@
     "css": [
       "assets/app-378e6984.css"
     ],
-    "file": "assets/app-622e5613.js",
+    "file": "assets/app-19348500.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
-  "resources/js/chart.js": {
-    "file": "assets/chart-eca509e2.js",
+  "resources/js/pages/books.js": {
+    "file": "assets/books-b94ab5df.js",
     "isEntry": true,
-    "src": "resources/js/chart.js"
+    "src": "resources/js/pages/books.js"
   }
 }

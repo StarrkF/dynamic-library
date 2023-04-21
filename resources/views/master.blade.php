@@ -8,7 +8,7 @@
     @vite('resources/js/app.js')
 </head>
 <body>
-    <div class="px-5 mt-5">
+    <div class="px-md-5 mt-5">
         @include('includes.alerts')
         @yield('content')
     </div>

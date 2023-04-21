@@ -12,6 +12,26 @@ const getChart = async () => {
 getChart()
 
 const data = {}
+const mdScreen = $(window).width() >= 768
+const options = {
+    scales: {
+        y: {
+            beginAtZero: true,
+        },
+        x: {
+            ticks: {
+                display: mdScreen ? true : false,
+                maxRotation: 40,
+                minRotation: 40,
+                autoSkip: false
+            },
+            barPercentage: 0.8,
+            categoryPercentage: 0.9,
+        }
+    },
+    responsive: true,
+    maintainAspectRatio: false
+}
 
 function updateChart() {
     data.labels = chartData.value.map(item => item.name);
@@ -31,4 +51,6 @@ var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
   type: 'bar',
   data: data,
+  options: options,
 });
+

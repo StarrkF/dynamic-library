@@ -10,16 +10,16 @@
 
         </div>
         <div class="card-body">
-            <div class="d-flex flex-column flex-sm-row justify-content-between">
-                <div class="d-flex gap-2 justify-start">
+            <div class="d-flex flex-column flex-md-row justify-content-between">
+                <div class="d-flex gap-2 flex-column flex-md-row justify-start">
                     <div class="mb-4">
-                        <button type="button" class="btn btn-dark px-5" data-bs-toggle="modal" data-bs-target="#bookAdd">
+                        <button type="button" class="btn btn-dark px-5 w-100" data-bs-toggle="modal" data-bs-target="#bookAdd">
                             Kitap Ekle
                         </button>
                         @include('includes.modals.book-add')
                     </div>
                     <div class="mb-4">
-                        <button type="button" class="btn btn-dark px-5" data-bs-toggle="modal" data-bs-target="#bookChart">
+                        <button type="button" class="btn btn-dark px-5 w-100" data-bs-toggle="modal" data-bs-target="#bookChart">
                             Verileri Göster
                         </button>
                         @include('includes.modals.book-chart')
@@ -39,8 +39,8 @@
             <div class="card">
                 <div class="card-header">Filtreler</div>
                 <div class="card-body">
-                    <div class="d-flex gap-4 align-items-end">
-                        <div class="mb-4">
+                    <div class="d-flex flex-column flex-md-row gap-4 align-items-end">
+                        <div class="mb-4 w-100">
                             <label for="perPage">Listele</label>
                             <select id="perPage" class="form-select form-filter" required>
                                 <option>25</option>
@@ -49,7 +49,7 @@
                                 <option>200</option>
                             </select>
                         </div>
-                        <div class="mb-4">
+                        <div class="mb-4 w-100">
                             <label for="byStatus">Durum</label>
                             <select id="byStatus" class="form-select form-filter" required>
                                 <option value="">Filtreyi Temizle</option>
@@ -58,7 +58,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="mb-4">
+                        <div class="mb-4 w-100">
                             <label for="byType">Kitap Türü</label>
                             <select id="byType" class="form-select form-filter" required>
                                 <option value="">Filtreyi Temizle</option>
@@ -67,7 +67,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="mb-4">
+                        <div class="mb-4 w-100">
                             <label for="byListType">Listelenecek Yer</label>
                             <select id="byListType" class="form-select form-filter" required>
                                 <option value="">Filtreyi Temizle</option>
@@ -76,7 +76,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="mb-4">
+                        <div class="mb-4 w-100">
                             <label for="byLibrary">Kütüphanede</label>
                             <select id="byLibrary" class="form-select form-filter" required>
                                 <option value="">Filtreyi Temizle</option>
@@ -84,7 +84,7 @@
                                 <option value="0">Hayır</option>
                             </select>
                         </div>
-                        <div class="mb-4">
+                        <div class="mb-4 w-100">
                             <button type="button" class="btn btn-outline-danger clearUrl">Temizle</button>
                         </div>
                     </div>
@@ -95,7 +95,11 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">
+                                <i role="button" id="asc" class="orderBy fa-solid fa-arrow-up fa-xs"></i>
+                                <i role="button" id="desc" class="orderBy fa-solid fa-arrow-down fa-xs"></i>
+                                ID
+                            </th>
                             <th scope="col">Kitap</th>
                             <th scope="col">Yazar</th>
                             <th scope="col">Yayıncı</th>

@@ -17,7 +17,8 @@ class BookController extends Controller
         $list_types = config('constant.books.list_types');
         $statuses = config('constant.books.status');
         $perPage = request('perPage', 50);
-        $books = Book::with('type')->filter()->paginate($perPage);
+        $orderBy = request('orderBy', 'asc');
+        $books = Book::with('type')->filter()->orderBy('id', $orderBy)->paginate($perPage);
         return view('pages.books', compact('books', 'types', 'list_types', 'statuses'));
     }
 
