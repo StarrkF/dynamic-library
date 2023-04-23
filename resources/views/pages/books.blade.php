@@ -19,6 +19,12 @@
                         @include('includes.modals.book-add')
                     </div>
                     <div class="mb-4">
+                        <button type="button" class="btn btn-dark px-5 w-100" data-bs-toggle="modal" data-bs-target="#typeAdd">
+                            Kitap Türü Ekle
+                        </button>
+                        @include('includes.modals.type-add')
+                    </div>
+                    <div class="mb-4">
                         <button type="button" class="btn btn-dark px-5 w-100" data-bs-toggle="modal" data-bs-target="#bookChart">
                             Verileri Göster
                         </button>

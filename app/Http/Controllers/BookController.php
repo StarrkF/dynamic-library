@@ -11,14 +11,16 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($list_type = null)
     {
         $types = Type::get();
         $list_types = config('constant.books.list_types');
         $statuses = config('constant.books.status');
         $perPage = request('perPage', 50);
         $orderBy = request('orderBy', 'asc');
-        $books = Book::with('type')->filter()->orderBy('id', $orderBy)->paginate($perPage);
+        $books = Book::when($list_type, function($q) use ($list_type) {
+            $q->where('list_type_id' ,$list_type);
+        })->with('type')->filter()->orderBy('id', $orderBy)->paginate($perPage);
         return view('pages.books', compact('books', 'types', 'list_types', 'statuses'));
     }
 

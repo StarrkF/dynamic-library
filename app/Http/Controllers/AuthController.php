@@ -17,7 +17,7 @@ class AuthController extends Controller
     {
 
         return  Auth::attempt(['email' => $request->email, 'password' => $request->password])
-        ? redirect()->route('get.book')
+        ? redirect()->route('get.home')
         : back()->with('error','Email or password incorrect');
 
     }
