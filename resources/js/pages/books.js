@@ -36,7 +36,6 @@ function initFilters(elements) {
     elements.map(item => {
         url.searchParams.get(item) ? $('#' + item).val(url.searchParams.get(item)) : ''
     })
-
 }
 
 

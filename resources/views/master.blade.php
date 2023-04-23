@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dynamic Library</title>
     @vite('resources/js/app.js')
+    @yield('css')
 </head>
 <body>
-    <div class="px-md-5 mt-5">
+    <div class="px-4 mt-5">
         @include('includes.alerts')
         @yield('content')
     </div>

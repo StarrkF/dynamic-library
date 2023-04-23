@@ -17,7 +17,7 @@ class Book extends Model
 
     public function getStatusAttribute($value)
     {
-        return $value ? config('constant.books.status.' . $value . '.name') : 'Seçilmemiş';
+        return $value ? config('constant.books.status.' . --$value . '.name') : 'Seçilmemiş';
     }
 
     public function getListTypeAttribute()
@@ -37,6 +37,7 @@ class Book extends Model
             $q->where('type_id', request('byType'));
         })
             ->when(request('byStatus'), function ($q) {
+
                 $q->where('status', request('byStatus'));
             })
             ->when(request('byListType'), function ($q) {
