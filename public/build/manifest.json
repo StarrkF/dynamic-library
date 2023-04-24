@@ -22,7 +22,7 @@
     "src": "resources/js/app.js"
   },
   "resources/js/pages/books.js": {
-    "file": "assets/books-b94ab5df.js",
+    "file": "assets/books-349930a6.js",
     "isEntry": true,
     "src": "resources/js/pages/books.js"
   }
