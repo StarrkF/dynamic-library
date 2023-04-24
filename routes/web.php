@@ -27,10 +27,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::group(['prefix' => 'book'], function(){
         Route::get('author/{slug}', [BookController::class, 'authorBook'])->name('get.author-book');
-        Route::get('/{list_type?}/{author?}', [BookController::class, 'index'])->name('get.book');
         Route::post('/', [BookController::class, 'store'])->name('store.book');
         Route::post('/{id}', [BookController::class, 'update'])->name('update.book');
-        Route::get('/{id}', [BookController::class, 'destroy'])->name('delete.book');
+        Route::get('delete/{id}', [BookController::class, 'destroy'])->name('delete.book');
+        Route::get('/{list_type?}/{author?}', [BookController::class, 'index'])->name('get.book');
     });
 
     Route::group(['prefix' => 'type'], function(){
