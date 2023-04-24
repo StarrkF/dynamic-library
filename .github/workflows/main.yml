@@ -21,7 +21,7 @@ jobs:
       run: git pull
 
     - name: Run Migrations
-      run: php artisan migrate
+      run: php artisan migrate --forece
 
     - name: Clear Caches
       run: php artisan optimize:clear
