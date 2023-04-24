@@ -22,7 +22,7 @@
                     <div class="custom-card shadow-lg">
                         <div class="custom-card-overlay"></div>
                         <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80" class="card-img-top" alt="...">
-                        <h3 class="custom-card-title text-center">Kütüphanem</h3>
+                        <h3 class="custom-card-title text-center">Kitaplarım</h3>
                     </div>
                 </a>
 
