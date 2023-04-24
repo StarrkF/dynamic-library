@@ -18,6 +18,8 @@ return [
         'passwords' => 'users',
     ],
 
+    'api_key' => env('VITE_API_KEY'),
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
