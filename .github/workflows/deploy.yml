@@ -15,10 +15,10 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install Dependencies
-      run: composer install
+      run:  composer install --no-interaction --prefer-dist --optimize-autoloader
 
     - name: Run Migrations
-      run: php artisan migrate --forece
+      run: php artisan migrate --force
 
     - name: Clear Caches
       run: php artisan optimize:clear
