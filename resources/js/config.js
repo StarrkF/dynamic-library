@@ -33,7 +33,7 @@ export default function useApi() {
     }
 
     const update = async (endpoint, parameter, data) => {
-
+        console.log(data)
         return await axios.put(endpoint + '/' + parameter, data)
             .then(function (response) {
                 return response.data

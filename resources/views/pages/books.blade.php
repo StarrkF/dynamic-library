@@ -20,9 +20,9 @@
                     </div>
                     <div class="mb-4">
                         <button type="button" class="btn btn-dark px-5 w-100" data-bs-toggle="modal" data-bs-target="#typeAdd">
-                            Kitap Türü Ekle
+                            Kitap Türleri
                         </button>
-                        @include('includes.modals.type-add')
+                        @include('includes.modals.types')
                     </div>
                     <div class="mb-4">
                         <button type="button" class="btn btn-dark px-5 w-100" data-bs-toggle="modal" data-bs-target="#bookChart">
@@ -130,9 +130,9 @@
                                 <td>{{ $book->publisher }}</td>
                                 <td>{{ $book->page_count }}</td>
                                 <td>{{ $book->type->name }}</td>
-                                <td>{{ $book->list_type }}</td>
                                 <td>{{ $book->buy_date }}</td>
                                 <td>{{ $book->read_date }}</td>
+                                <td>{{ $book->list_type }}</td>
                                 <td>{{ $book->status }}</td>
                                 <td>{{ $book->in_library }}</td>
                                 <td>

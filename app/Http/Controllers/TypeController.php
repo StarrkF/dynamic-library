@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Type;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class TypeController extends Controller
@@ -40,15 +41,15 @@ class TypeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        return new JsonResponse(Type::find($id));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         //
     }
@@ -56,16 +57,20 @@ class TypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        return Type::where('id', $id)->update(['name' => $request->name ])
+        ? back()->with('success', 'Kitap Türü Güncellendi')
+        : back()->with('success', 'Kitap Türü Güncellenemedi');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        return Type::where('id', $id)->delete()
+        ? back()->with('success', 'Kitap Türü Silindi')
+        : back()->with('success', 'Kitap Türü Silinemedi');
     }
 }

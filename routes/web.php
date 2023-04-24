@@ -35,6 +35,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::group(['prefix' => 'type'], function(){
         Route::post('/', [TypeController::class, 'store'])->name('store.type');
+        Route::post('/{id}', [TypeController::class, 'update'])->name('update.type');
+        Route::post('/delete/{id}', [TypeController::class, 'destroy'])->name('delete.type');
     });
 });
 
