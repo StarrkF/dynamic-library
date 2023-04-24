@@ -17,9 +17,6 @@ jobs:
     - name: Install Dependencies
       run: composer install
 
-    - name: Git Pull
-      run: git pull
-
     - name: Run Migrations
       run: php artisan migrate --forece
 
