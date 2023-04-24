@@ -11,7 +11,7 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($list_type = null)
+    public function index($list_type = null, $author = null)
     {
         $types = Type::get();
         $list_types = config('constant.books.list_types');
@@ -20,7 +20,11 @@ class BookController extends Controller
         $orderBy = request('orderBy', 'asc');
         $books = Book::when($list_type, function($q) use ($list_type) {
             $q->where('list_type_id' ,$list_type);
-        })->with('type')->filter()->orderBy('id', $orderBy)->paginate($perPage);
+        })
+        ->when($author, function($q) use ($author) {
+            $q->where('author_slug' ,$author);
+        })
+        ->with('type')->filter()->orderBy('id', $orderBy)->paginate($perPage);
         return view('pages.books', compact('books', 'types', 'list_types', 'statuses'));
     }
 
@@ -41,12 +45,15 @@ class BookController extends Controller
             Book::create([
                 'name' => $request->name,
                 'author' => $request->author,
+                'author_slug' => $request->author,
                 'publisher' => $request->publisher,
                 'page_count' => $request->page_count,
                 'in_library' => $request->in_library,
                 'status' => $request->status,
                 'type_id' => $request->type_id,
                 'list_type_id' => $request->list_type_id,
+                'buy_date' => $request->buy_date,
+                'read_date' => $request->read_date,
             ]);
             return back()->with('success', 'Kitap Başarıyla Eklendi');
         } catch (\Throwable $th) {
@@ -79,12 +86,15 @@ class BookController extends Controller
         $update = Book::where('id', $id)->update([
             'name' => $request->name,
             'author' => $request->author,
+            'author_slug' => $request->author,
             'publisher' => $request->publisher,
             'page_count' => $request->page_count,
             'in_library' => $request->in_library,
             'status' => $request->status,
             'type_id' => $request->type_id,
             'list_type_id' => $request->list_type_id,
+            'buy_date' => $request->buy_date,
+            'read_date' => $request->read_date,
         ]);
 
         return $update
@@ -100,5 +110,15 @@ class BookController extends Controller
         return Book::where('id', $id)->delete()
         ? back()->with('success', 'Kitap Başarıyla Silindi')
         : back()->with('error', 'Kitap Silinemedi');
+    }
+
+    public function authorBook($slug) {
+        $types = Type::get();
+        $list_types = config('constant.books.list_types');
+        $statuses = config('constant.books.status');
+        $perPage = request('perPage', 50);
+        $orderBy = request('orderBy', 'asc');
+        $books = Book::where('author_slug' ,$slug)->with('type')->filter()->orderBy('id', $orderBy)->paginate($perPage);
+        return view('pages.books', compact('books', 'types', 'list_types', 'statuses'));
     }
 }

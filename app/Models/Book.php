@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Book extends Model
 {
@@ -28,6 +29,11 @@ class Book extends Model
     public function getInLibraryAttribute($value)
     {
         return $value ? 'Evet' : 'Hayır';
+    }
+
+    public function setAuthorSlugAttribute()
+    {
+        $this->attributes['author_slug'] = Str::slug($this->author);
     }
 
     public function scopeFilter($query)
