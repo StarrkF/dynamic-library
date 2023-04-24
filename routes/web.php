@@ -26,7 +26,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('get.home');
 
     Route::group(['prefix' => 'book'], function(){
-        Route::get('/{list_type?}', [BookController::class, 'index'])->name('get.book');
+        Route::get('author/{slug}', [BookController::class, 'authorBook'])->name('get.author-book');
+        Route::get('/{list_type?}/{author?}', [BookController::class, 'index'])->name('get.book');
         Route::post('/', [BookController::class, 'store'])->name('store.book');
         Route::post('/{id}', [BookController::class, 'update'])->name('update.book');
         Route::get('/{id}', [BookController::class, 'destroy'])->name('delete.book');

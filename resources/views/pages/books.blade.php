@@ -111,6 +111,8 @@
                             <th scope="col">Yayıncı</th>
                             <th scope="col">Sayfa</th>
                             <th scope="col">Tür</th>
+                            <th scope="col">Satın Alma</th>
+                            <th scope="col">Okunma</th>
                             <th scope="col">Listelenecek Yer</th>
                             <th scope="col">Durum</th>
                             <th scope="col">Kütüphanede</th>
@@ -122,11 +124,15 @@
                             <tr>
                                 <th>{{ $book->id }}</th>
                                 <td>{{ $book->name }}</td>
-                                <td>{{ $book->author }}</td>
+                                <td>
+                                    <a href="{{ route('get.author-book', $book->author_slug) }}">{{ $book->author }}</a>
+                                </td>
                                 <td>{{ $book->publisher }}</td>
                                 <td>{{ $book->page_count }}</td>
                                 <td>{{ $book->type->name }}</td>
                                 <td>{{ $book->list_type }}</td>
+                                <td>{{ $book->buy_date }}</td>
+                                <td>{{ $book->read_date }}</td>
                                 <td>{{ $book->status }}</td>
                                 <td>{{ $book->in_library }}</td>
                                 <td>

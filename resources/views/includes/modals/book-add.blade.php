@@ -31,6 +31,16 @@
                         </div>
 
                         <div class="mb-4 col-md-6">
+                            <label for="buy_date">Satın Alma Tarihi</label>
+                            <input type="date" class="form-control"  name="buy_date" id="buy_date">
+                        </div>
+
+                        <div class="mb-4 col-md-6">
+                            <label for="read_date">Okunma Tarihi</label>
+                            <input type="date" class="form-control"  name="read_date" id="read_date">
+                        </div>
+
+                        <div class="mb-4 col-md-6">
                             <label for="type_id">Kitap Türü <span class="text-danger">*</span></label>
                             <select name="type_id" id="type_id" required class="form-select" >
                                 <option value="">Seçim Yap</option>
