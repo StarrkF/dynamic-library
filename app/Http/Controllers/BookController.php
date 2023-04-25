@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Arr;
 
 class BookController extends Controller
 {
@@ -120,5 +122,30 @@ class BookController extends Controller
         $orderBy = request('orderBy', 'asc');
         $books = Book::where('author_slug' ,$slug)->with('type')->filter()->orderBy('id', $orderBy)->paginate($perPage);
         return view('pages.books', compact('books', 'types', 'list_types', 'statuses'));
+    }
+
+    public function draw() {
+        $types = request('types');
+        $data  = [];
+        if ($types) {
+
+            if(str_contains($types, 'check_type')) {
+                $data['check_type'] =  Type::inRandomOrder()->pluck('name')->first();
+            }
+
+            if(str_contains($types, 'check_listtype')) {
+                $data['check_listtype'] =  Arr::random(config('constant.books.list_types'))['name'];
+            }
+
+            if(str_contains($types, 'check_status')) {
+                $data['check_status'] =  Arr::random(config('constant.books.status'))['name'];
+            }
+
+            if(str_contains($types, 'check_library')) {
+                $data['check_library'] =  Arr::random(['Evet', 'Hayır']);
+            }
+        }
+
+        return new JsonResource($data);
     }
 }

@@ -33,7 +33,6 @@ export default function useApi() {
     }
 
     const update = async (endpoint, parameter, data) => {
-        console.log(data)
         return await axios.put(endpoint + '/' + parameter, data)
             .then(function (response) {
                 return response.data
@@ -68,7 +67,6 @@ export default function useApi() {
             const colorString = `#${color.map(c => Math.max(0, Math.min(255, c)).toString(16).padStart(2, '0')).join('')}`;
             colors.push(colorString);
         }
-        console.log(colors)
         return colors;
     }
 

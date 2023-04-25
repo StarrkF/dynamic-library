@@ -1,9 +1,11 @@
 import '../chart'
 import useConfig from '../config';
 
-const { show, update } = useConfig();
+const { index, show, update } = useConfig();
 
 const url = new URL(window.location.href);
+const selectedChecks = [];
+const drawResult = null;
 
 initFilters(['byType', 'byStatus', 'byLibrary', 'byListType',  'search', 'perPage'])
 
@@ -41,10 +43,42 @@ $(document).on("click", ".updateType", function() {
     location.reload()
 });
 
+$(document).on("change", ".draw-switch", function() {
+    var el = $(this)
+    var name = el.attr('data-name')
+    if (el.is(':checked')) {
+        $("#draw-list").append('<li class="list-group-item" id="li-' + this.id + '">' + name + '</li>');
+        selectedChecks.push({id:this.id ,name:name})
+    } else {
+        let index = selectedChecks.indexOf(name);
+        $("#li-" + this.id ).remove();
+        selectedChecks.splice(index, 1);
+    }
+    console.log(selectedChecks)
+    selectedChecks.length > 0 ? $('#getDraw').attr('disabled', false) : $('#getDraw').attr('disabled', true)
+});
+
+$(document).on("click", "#getDraw", function() {
+    getDraw().then(result =>{
+        let keys = Object.keys(result)
+        keys.map(key => {
+            $("#span-" + key).remove()
+            $("#li-" + key).append('<span id="span-' + key + '" > : ' + result[key] + '</span>');
+            console.log("#li-" + key)
+        })
+    })
+});
+
 async function getType(id) {
     const response = await show('/type', id);
     $('#type_name').val(response.name);
-    console.log(name)
+}
+
+async function getDraw() {
+    let ids = selectedChecks.map(check => check.id);
+    let types = ids.join(',');
+    let response = await index('/draw?types=' + types);
+    return response.data
 }
 
 async function updateType(id) {
