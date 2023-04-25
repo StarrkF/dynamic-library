@@ -24,11 +24,9 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-
-    - name: Run Migrations
-      run: php artisan migrate --force
-
-    - name: Clear Caches
-      run: php artisan optimize:clear
+          script: |
+            cd /var/www/furkanaymergen.site
+            php artisan migrate --force
+            php artisan optimize:clear
 
 
