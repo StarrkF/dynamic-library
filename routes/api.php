@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ChartController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,3 +19,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('chart', ChartController::class);
 Route::resource('type', TypeController::class);
+
+Route::get('draw',[BookController::class,'draw']);
