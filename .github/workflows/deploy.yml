@@ -32,4 +32,3 @@ jobs:
     - name: Clear Caches
       run: php artisan optimize:clear
 
-   
