@@ -17,14 +17,14 @@ class Book extends Model
         return $this->belongsTo(Type::class);
     }
 
-    public function getStatusAttribute($value)
+    public function getStatusNameAttribute()
     {
-        return $value ? config('constant.books.status.' . --$value . '.name') : 'Seçilmemiş';
+        return $this->status ? config('constant.books.status.' . $this->status) : 'Seçilmemiş';
     }
 
-    public function getListTypeAttribute()
+    public function getListTypeNameAttribute()
     {
-        return config('constant.books.list_types.' . --$this->list_type_id . '.name');
+        return $this->list_type_id ? config('constant.books.list_types.' . $this->list_type_id) : 'Seçilmemiş';
     }
 
     public function getInLibraryAttribute($value)
@@ -43,38 +43,19 @@ class Book extends Model
         $query->when(request('byType'), function ($q) {
             $q->where('type_id', request('byType'));
         })
-            ->when(request('byStatus'), function ($q) {
+        ->when(request('byStatus'), function ($q) {
 
-                $q->where('status', request('byStatus'));
-            })
-            ->when(request('byListType'), function ($q) {
-                $q->where('list_type_id', request('byListType'));
-            })
-            ->when(request('byLibrary'), function ($q) {
-                $q->where('in_library', request('byLibrary'));
-            })
-            ->when(request('search'), function ($q) {
-                $q->where('name', 'like', '%' . request('search') . '%')
-                    ->orWhere('author', 'like', '%' . request('search') . '%');
-            });
-    }
-
-    public function scopeDraw($query, $types)
-    {
-        $list_type = Arr::random(config('constant.books.list_types'))['id'];
-        $status =  Arr::random(config('constant.books.status'))['id'];
-        $ibrary =  Arr::random([1, 0]);
-        $query->when(str_contains($types, 'check_type'), function ($q) {
-            $q->where('type_id', Type::inRandomOrder()->pluck('id')->first());
+            $q->where('status', request('byStatus'));
         })
-        ->when(str_contains($types, 'check_listtype'), function ($q) use ($list_type) {
-            $q->where('list_type_id', $list_type);
+        ->when(request('byListType'), function ($q) {
+            $q->where('list_type_id', request('byListType'));
         })
-        ->when(str_contains($types, 'check_status'), function ($q) use ($status) {
-            $q->where('status', $status);
+        ->when(request()->has('byLibrary'), function ($q) {
+            $q->where('in_library', request('byLibrary'));
         })
-        ->when(str_contains($types, 'check_library'), function ($q) use ($ibrary){
-            $q->where('in_library',$ibrary);
+        ->when(request('search'), function ($q) {
+            $q->where('name', 'like', '%' . request('search') . '%')
+                ->orWhere('author', 'like', '%' . request('search') . '%');
         });
     }
 }

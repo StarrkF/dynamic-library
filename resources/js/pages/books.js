@@ -50,9 +50,11 @@ $(document).on("change", ".draw-select", function() {
 
 $(document).on("click", "#getDraw", function() {
     getDraw().then(result =>{
+        let name = '<h2>' + result.name + '</h2>'
+        let author = '<h4>' + result.author + '</h4>'
+        let type = '<h5>Kitap Türü: ' +  result.type.name + ' - Konum: ' + result.list_type_name + ' - Durum: ' + result.status_name  + '</h5>'
         $('.card-result').attr('hidden', false);
-        $('.card-result h2').text(result.name);
-        $('.card-result h4').text(result.author);
+        $('.card-result .card-body').html(name + author + type);
         $('.draw-select').val('');
     })
 });

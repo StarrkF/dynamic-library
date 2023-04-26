@@ -54,8 +54,8 @@
                             <label for="list_type_id">Listeleneceği Yer</label>
                             <select name="list_type_id" id="list_type_id" class="form-select" >
                                 <option value="">Seçim Yap</option>
-                                @foreach ($list_types as $list)
-                                    <option value="{{ $list['id'] }}">{{ $list['name'] }}</option>
+                                @foreach ($list_types as $key => $list)
+                                    <option value="{{ $key }}">{{ $list }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -64,8 +64,8 @@
                             <label for="status">Durum</label>
                             <select name="status" id="status" class="form-select" >
                                 <option value="">Seçim Yap</option>
-                                @foreach ($statuses as $status)
-                                    <option value="{{ $status['id'] }}">{{ $status['name']  }}</option>
+                                @foreach ($statuses as $key => $status)
+                                    <option value="{{ $key }}">{{ $status }}</option>
                                 @endforeach
                             </select>
                         </div>

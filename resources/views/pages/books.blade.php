@@ -68,8 +68,8 @@
                             <label for="byStatus">Durum</label>
                             <select id="byStatus" class="form-select form-filter" required>
                                 <option value="">Filtreyi Temizle</option>
-                                @foreach ($statuses as $status)
-                                    <option value="{{ $status['id'] }}">{{ $status['name'] }}</option>
+                                @foreach ($statuses as $key => $status)
+                                    <option value="{{ $key }}">{{ $status }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -86,8 +86,8 @@
                             <label for="byListType">Listelenecek Yer</label>
                             <select id="byListType" class="form-select form-filter" required>
                                 <option value="">Filtreyi Temizle</option>
-                                @foreach ($list_types as $list)
-                                    <option value="{{ $list['id'] }}">{{ $list['name'] }}</option>
+                                @foreach ($list_types as $key => $list)
+                                    <option value="{{ $key }}">{{ $list }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -141,8 +141,8 @@
                                 <td>{{ $book->type->name }}</td>
                                 <td>{{ $book->buy_date }}</td>
                                 <td>{{ $book->read_date }}</td>
-                                <td>{{ $book->list_type }}</td>
-                                <td>{{ $book->status }}</td>
+                                <td>{{ $book->list_type_name }}</td>
+                                <td>{{ $book->status_name }}</td>
                                 <td>{{ $book->in_library }}</td>
                                 <td>
                                     <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
