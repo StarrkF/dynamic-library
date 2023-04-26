@@ -43,29 +43,20 @@ $(document).on("click", ".updateType", function() {
     location.reload()
 });
 
-$(document).on("change", ".draw-switch", function() {
+$(document).on("change", ".draw-select", function() {
     var el = $(this)
-    var name = el.attr('data-name')
-    if (el.is(':checked')) {
-        $("#draw-list").append('<li class="list-group-item" id="li-' + this.id + '">' + name + '</li>');
-        selectedChecks.push({id:this.id ,name:name})
-    } else {
-        let index = selectedChecks.indexOf(name);
-        $("#li-" + this.id ).remove();
-        selectedChecks.splice(index, 1);
-    }
-    console.log(selectedChecks)
-    selectedChecks.length > 0 ? $('#getDraw').attr('disabled', false) : $('#getDraw').attr('disabled', true)
+    var draw_id =  this.id.replace("draw_", "");
+    selectedChecks[draw_id] = this.value
+    // selectedChecks.length > 0 ? $('#getDraw').attr('disabled', false) : $('#getDraw').attr('disabled', true);
+
 });
 
 $(document).on("click", "#getDraw", function() {
+
     getDraw().then(result =>{
-        let keys = Object.keys(result)
-        keys.map(key => {
-            $("#span-" + key).remove()
-            $("#li-" + key).append('<span id="span-' + key + '" > : ' + result[key] + '</span>');
-            console.log("#li-" + key)
-        })
+        $('.card-result').attr('hidden', false);
+        $('.card-result h2').text(result.name);
+        $('.draw-select').val('');
     })
 });
 
@@ -75,9 +66,8 @@ async function getType(id) {
 }
 
 async function getDraw() {
-    let ids = selectedChecks.map(check => check.id);
-    let types = ids.join(',');
-    let response = await index('/draw?types=' + types);
+    var params = Object.assign({}, selectedChecks)
+    let response = await index('/draw?' + $.param(params));
     return response.data
 }
 

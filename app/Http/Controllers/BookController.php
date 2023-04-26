@@ -125,27 +125,11 @@ class BookController extends Controller
     }
 
     public function draw() {
-        $types = request('types');
         $data  = [];
-        if ($types) {
-
-            if(str_contains($types, 'check_type')) {
-                $data['check_type'] =  Type::inRandomOrder()->pluck('name')->first();
-            }
-
-            if(str_contains($types, 'check_listtype')) {
-                $data['check_listtype'] =  Arr::random(config('constant.books.list_types'))['name'];
-            }
-
-            if(str_contains($types, 'check_status')) {
-                $data['check_status'] =  Arr::random(config('constant.books.status'))['name'];
-            }
-
-            if(str_contains($types, 'check_library')) {
-                $data['check_library'] =  Arr::random(['Evet', 'Hayır']);
-            }
+        while( empty($data) )
+        {
+            $data = Book::select('name')->filter()->inRandomOrder()->first();
         }
-
         return new JsonResource($data);
     }
 }
