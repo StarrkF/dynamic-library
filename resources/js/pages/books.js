@@ -44,18 +44,15 @@ $(document).on("click", ".updateType", function() {
 });
 
 $(document).on("change", ".draw-select", function() {
-    var el = $(this)
     var draw_id =  this.id.replace("draw_", "");
     selectedChecks[draw_id] = this.value
-    // selectedChecks.length > 0 ? $('#getDraw').attr('disabled', false) : $('#getDraw').attr('disabled', true);
-
 });
 
 $(document).on("click", "#getDraw", function() {
-
     getDraw().then(result =>{
         $('.card-result').attr('hidden', false);
         $('.card-result h2').text(result.name);
+        $('.card-result h4').text(result.author);
         $('.draw-select').val('');
     })
 });
