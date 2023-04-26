@@ -26,6 +26,7 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           script: |
             cd /var/www/furkanaymergen.site
+            git pull
             php artisan migrate --force
             php artisan optimize:clear
 
