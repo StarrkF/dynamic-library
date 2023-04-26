@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 class Book extends Model
@@ -56,5 +57,24 @@ class Book extends Model
                 $q->where('name', 'like', '%' . request('search') . '%')
                     ->orWhere('author', 'like', '%' . request('search') . '%');
             });
+    }
+
+    public function scopeDraw($query, $types)
+    {
+        $list_type = Arr::random(config('constant.books.list_types'))['id'];
+        $status =  Arr::random(config('constant.books.status'))['id'];
+        $ibrary =  Arr::random([1, 0]);
+        $query->when(str_contains($types, 'check_type'), function ($q) {
+            $q->where('type_id', Type::inRandomOrder()->pluck('id')->first());
+        })
+        ->when(str_contains($types, 'check_listtype'), function ($q) use ($list_type) {
+            $q->where('list_type_id', $list_type);
+        })
+        ->when(str_contains($types, 'check_status'), function ($q) use ($status) {
+            $q->where('status', $status);
+        })
+        ->when(str_contains($types, 'check_library'), function ($q) use ($ibrary){
+            $q->where('in_library',$ibrary);
+        });
     }
 }
