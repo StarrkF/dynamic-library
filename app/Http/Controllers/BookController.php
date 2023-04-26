@@ -128,7 +128,7 @@ class BookController extends Controller
         $data  = [];
         while( empty($data) )
         {
-            $data = Book::select('name')->filter()->inRandomOrder()->first();
+            $data = Book::filter()->inRandomOrder()->first();
         }
         return new JsonResource($data);
     }

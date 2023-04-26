@@ -70,20 +70,17 @@
                             </div>
 
                             <div class="col-md-8">
-                                <ul class="list-group" id="draw-list">
-                                </ul>
+                                <div class="card card-result text-center drawResult h-100" hidden>
+                                    <div class="card-header">
+                                        <h3>Seçilen Kitap</h3>
+                                    </div>
+                                    <div class="card-body d-flex flex-column gap-3 align-items-center justify-content-center">
+                                        <h2></h2>
+                                        <h4></h4>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="card card-result text-center drawResult" hidden>
-                            <div class="card-header">
-                                <h4>Seçilen Kitap</h4>
-                            </div>
-                            <div class="card-body">
-                                <h2></h2>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
