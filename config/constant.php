@@ -3,15 +3,16 @@
 return [
     'books' => [
         'status' => [
-            ['id' => 1 , 'name' => 'Okundu'],
-            ['id' => 2 , 'name' => 'Okunmadı'],
-            ['id' => 3 , 'name' => 'Okunacak'],
-            ['id' => 4 , 'name' => 'Yarım Kalam'],
+            1 => 'Okundu',
+            2 => 'Okunmadı',
+            3 => 'Okunacak',
+            4 => 'Yarım Kalan',
+            5 => 'Okuyorum'
         ],
         'list_types' => [
-            ['id' => 1 , 'name' => 'Kütüphane'],
-            ['id' => 2 , 'name' => 'Alınacaklar'],
-            ['id' => 3 , 'name' => 'Annem']
+            1 => 'Kitaplarım',
+            2 => 'Alınacaklar',
+            3 => 'Annem'
         ]
     ]
 ];

@@ -51,23 +51,21 @@
                                 @endforeach
                             </select>
                         </div>
-
                         <div class="mb-3 col-md-6">
                             <label for="list_type_id">Listeleneceği Yer</label>
                             <select name="list_type_id" id="list_type_id" class="form-select" required>
                                 <option value="">Seçim Yap</option>
-                                @foreach ($list_types as $list)
-                                    <option {{ $book->list_type_id == $list['id'] ? 'selected' : '' }} value="{{ $list['id'] }}">{{ $list['name'] }}</option>
+                                @foreach ($list_types as $key => $list)
+                                    <option {{ $book->list_type_id == $key ? 'selected' : '' }} value="{{ $key }}"> {{ $list }}</option>
                                 @endforeach
                             </select>
                         </div>
-
                         <div class="mb-3 col-md-6">
                             <label for="status">Durum</label>
                             <select name="status" id="status" class="form-select" required>
                                 <option value="">Seçim Yap</option>
-                                @foreach ($statuses as $status)
-                                    <option {{ $book->status == $status['id'] ? 'selected' : '' }} value="{{ $status['id'] }}" >{{ $status['name'] }}</option>
+                                @foreach ($statuses as $key => $status)
+                                    <option {{ $book->status == $key ? 'selected' : '' }} value="{{ $key }}" >{{ $status }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BookResource;
 use App\Models\Book;
 use App\Models\Type;
 use Illuminate\Http\Request;
@@ -128,8 +129,8 @@ class BookController extends Controller
         $data  = [];
         while( empty($data) )
         {
-            $data = Book::filter()->inRandomOrder()->first();
+            $data = Book::filter()->with('type')->inRandomOrder()->first();
         }
-        return new JsonResource($data);
+        return new BookResource($data);
     }
 }
