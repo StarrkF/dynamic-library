@@ -27,9 +27,9 @@ class Book extends Model
         return $this->list_type_id ? config('constant.books.list_types.' . $this->list_type_id) : 'Seçilmemiş';
     }
 
-    public function getInLibraryAttribute($value)
+    public function getInLibraryNameAttribute()
     {
-        return $value ? 'Evet' : 'Hayır';
+        return in_array($this->in_library, [0, 1]) ? config('constant.books.in_libray.' . $this->in_library) : 'Seçilmemiş';
     }
 
     public function setAuthorSlugAttribute()

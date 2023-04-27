@@ -13,6 +13,10 @@ return [
             1 => 'Kitaplarım',
             2 => 'Alınacaklar',
             3 => 'Annem'
+        ],
+        'in_libray' => [
+            1 => 'Evet',
+            0 => 'Hayır'
         ]
     ]
 ];

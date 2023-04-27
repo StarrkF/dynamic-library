@@ -73,9 +73,10 @@
                         <div class="mb-4 col-md-6">
                             <label for="in_library">Kütüphanede</label>
                             <select name="in_library" id="in_library" class="form-select" >
-                                   <option value="">Seçim Yap</option>
-                                   <option value="1">Evet</option>
-                                   <option value="0">Hayır</option>
+                                <option value="">Seçim Yap</option>
+                                @foreach ($libraries as $key => $library)
+                                    <option value="{{ $key }}">{{ $library }}</option>
+                                @endforeach
                             </select>
                         </div>
 
