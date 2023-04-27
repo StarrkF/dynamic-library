@@ -95,8 +95,9 @@
                             <label for="byLibrary">Kütüphanede</label>
                             <select id="byLibrary" class="form-select form-filter" required>
                                 <option value="">Filtreyi Temizle</option>
-                                <option value="1">Evet</option>
-                                <option value="0">Hayır</option>
+                                @foreach ($libraries as $key => $library)
+                                    <option value="{{ $key }}">{{ $library }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mb-4 w-100">
@@ -143,7 +144,7 @@
                                 <td>{{ $book->read_date }}</td>
                                 <td>{{ $book->list_type_name }}</td>
                                 <td>{{ $book->status_name }}</td>
-                                <td>{{ $book->in_library }}</td>
+                                <td>{{ $book->in_library_name }}</td>
                                 <td>
                                     <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
                                         data-bs-target="#bookUpdate{{ $book->id }}">

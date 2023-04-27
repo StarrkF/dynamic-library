@@ -74,8 +74,9 @@
                             <label for="in_library">Kütüphanede</label>
                             <select name="in_library" id="in_library" class="form-select" >
                                 <option value="">Seçim Yap</option>
-                                <option {{ $book->status == 1 ? 'selected' : '' }} value="1">Evet</option>
-                                <option {{ $book->status == 0 ? 'selected' : '' }} value="0">Hayır</option>
+                                @foreach ($libraries as $key => $library)
+                                    <option {{ $book->in_library == $key ? 'selected' : '' }} value="{{ $key }}" >{{ $library }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

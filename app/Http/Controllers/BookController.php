@@ -19,6 +19,7 @@ class BookController extends Controller
         $types = Type::get();
         $list_types = config('constant.books.list_types');
         $statuses = config('constant.books.status');
+        $libraries = config('constant.books.in_libray');
         $perPage = request('perPage', 50);
         $orderBy = request('orderBy', 'asc');
         $books = Book::when($list_type, function($q) use ($list_type) {
@@ -28,7 +29,7 @@ class BookController extends Controller
             $q->where('author_slug' ,$author);
         })
         ->with('type')->filter()->orderBy('id', $orderBy)->paginate($perPage);
-        return view('pages.books', compact('books', 'types', 'list_types', 'statuses'));
+        return view('pages.books', compact('books', 'types', 'list_types', 'statuses', 'libraries'));
     }
 
     /**
@@ -119,10 +120,11 @@ class BookController extends Controller
         $types = Type::get();
         $list_types = config('constant.books.list_types');
         $statuses = config('constant.books.status');
+        $libraries = config('constant.books.in_libray');
         $perPage = request('perPage', 50);
         $orderBy = request('orderBy', 'asc');
         $books = Book::where('author_slug' ,$slug)->with('type')->filter()->orderBy('id', $orderBy)->paginate($perPage);
-        return view('pages.books', compact('books', 'types', 'list_types', 'statuses'));
+        return view('pages.books', compact('books', 'types', 'list_types', 'statuses', 'libraries'));
     }
 
     public function draw() {

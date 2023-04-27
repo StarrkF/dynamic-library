@@ -47,8 +47,9 @@
                                     <label for="in_library">Kütüphanede</label>
                                     <select id="draw_byLibrary" class="form-select form-select-sm draw-select" >
                                            <option value="">Seçim Yap</option>
-                                           <option value="1">Evet</option>
-                                           <option value="0">Hayır</option>
+                                            @foreach ($libraries as $key => $library)
+                                                <option value="{{ $key }}">{{ $library }}</option>
+                                            @endforeach
                                     </select>
                                 </div>
                             </div>
