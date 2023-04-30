@@ -8,6 +8,7 @@ use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -22,13 +23,13 @@ class BookController extends Controller
         $libraries = config('constant.books.in_libray');
         $perPage = request('perPage', 50);
         $orderBy = request('orderBy', 'asc');
-        $books = Book::when($list_type, function($q) use ($list_type) {
-            $q->where('list_type_id' ,$list_type);
+        $books = Book::where('user_id', Auth::id())->when($list_type, function ($q) use ($list_type) {
+            $q->where('list_type_id', $list_type);
         })
-        ->when($author, function($q) use ($author) {
-            $q->where('author_slug' ,$author);
-        })
-        ->with('type')->filter()->orderBy('id', $orderBy)->paginate($perPage);
+            ->when($author, function ($q) use ($author) {
+                $q->where('author_slug', $author);
+            })
+            ->with('type')->filter()->orderBy('id', $orderBy)->paginate($perPage);
         return view('pages.books', compact('books', 'types', 'list_types', 'statuses', 'libraries'));
     }
 
@@ -47,6 +48,7 @@ class BookController extends Controller
     {
         try {
             Book::create([
+                'user_id' => Auth::id(),
                 'name' => $request->name,
                 'author' => $request->author,
                 'author_slug' => $request->author,
@@ -63,7 +65,6 @@ class BookController extends Controller
         } catch (\Throwable $th) {
             return back()->with('error', 'Kitap Eklenemedi');
         }
-
     }
 
     /**
@@ -102,8 +103,8 @@ class BookController extends Controller
         ]);
 
         return $update
-        ? back()->with('success', 'Kitap Başarıyla Güncellendi')
-        : back()->with('error', 'Kitap Güncellenemedi');
+            ? back()->with('success', 'Kitap Başarıyla Güncellendi')
+            : back()->with('error', 'Kitap Güncellenemedi');
     }
 
     /**
@@ -112,26 +113,27 @@ class BookController extends Controller
     public function destroy($id)
     {
         return Book::where('id', $id)->delete()
-        ? back()->with('success', 'Kitap Başarıyla Silindi')
-        : back()->with('error', 'Kitap Silinemedi');
+            ? back()->with('success', 'Kitap Başarıyla Silindi')
+            : back()->with('error', 'Kitap Silinemedi');
     }
 
-    public function authorBook($slug) {
+    public function authorBook($slug)
+    {
         $types = Type::get();
         $list_types = config('constant.books.list_types');
         $statuses = config('constant.books.status');
         $libraries = config('constant.books.in_libray');
         $perPage = request('perPage', 50);
         $orderBy = request('orderBy', 'asc');
-        $books = Book::where('author_slug' ,$slug)->with('type')->filter()->orderBy('id', $orderBy)->paginate($perPage);
+        $books = Book::where('user_id', Auth::id())->where('author_slug', $slug)->with('type')->filter()->orderBy('id', $orderBy)->paginate($perPage);
         return view('pages.books', compact('books', 'types', 'list_types', 'statuses', 'libraries'));
     }
 
-    public function draw() {
+    public function draw()
+    {
         $data  = [];
-        while( empty($data) )
-        {
-            $data = Book::filter()->with('type')->inRandomOrder()->first();
+        while (empty($data)) {
+            $data = Book::where('user_id', Auth::id())->filter()->with('type')->inRandomOrder()->first();
         }
         return new BookResource($data);
     }

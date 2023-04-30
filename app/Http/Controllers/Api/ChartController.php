@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Type;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ChartController extends Controller
 {
@@ -14,8 +15,10 @@ class ChartController extends Controller
      */
     public function index()
     {
-       $types = Type::select('id', 'name')->withCount('books')->get();
-       return new JsonResponse($types);
+        $types = Type::select('id', 'name')->withCount(['books' => function ($query) {
+            $query->where('user_id', Auth::id());
+        }]);
+        return new JsonResponse($types);
     }
 
     /**
