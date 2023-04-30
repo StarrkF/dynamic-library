@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('login', [AuthController::class,'index'])->name('login');
 Route::post('login', [AuthController::class,'login'])->name('post.login');
+Route::post('register', [AuthController::class,'register'])->name('post.register');
 Route::get('logout', [AuthController::class,'logout'])->name('logout');
 
 
