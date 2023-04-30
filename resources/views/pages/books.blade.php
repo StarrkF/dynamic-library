@@ -3,9 +3,10 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between ">
                 <h3>Kitaplar</h3>
-                <div class="d-flex gap-2">
+                <div class="d-flex align-items-center gap-2">
+                    <h4>{{ Auth::user()->name }}</h4>
                     <a href="{{ route('get.home') }}" class="btn btn-dark">Anasayfa</a>
                     <a href="{{ route('logout') }}" class="btn btn-danger">Çıkış Yap</a>
                 </div>
@@ -16,25 +17,29 @@
             <div class="d-flex flex-column flex-md-row justify-content-between">
                 <div class="d-flex gap-2 flex-column flex-md-row justify-start">
                     <div class="mb-4">
-                        <button type="button" class="btn btn-outline-primary px-5 w-100" data-bs-toggle="modal" data-bs-target="#bookAdd">
+                        <button type="button" class="btn btn-outline-primary px-5 w-100" data-bs-toggle="modal"
+                            data-bs-target="#bookAdd">
                             Kitap Ekle
                         </button>
                         @include('includes.modals.book-add')
                     </div>
                     <div class="mb-4">
-                        <button type="button" class="btn btn-outline-warning px-5 w-100" data-bs-toggle="modal" data-bs-target="#typeAdd">
+                        <button type="button" class="btn btn-outline-warning px-5 w-100" data-bs-toggle="modal"
+                            data-bs-target="#typeAdd">
                             Kitap Türleri
                         </button>
                         @include('includes.modals.types')
                     </div>
                     <div class="mb-4">
-                        <button type="button" class="btn btn-outline-success px-5 w-100" data-bs-toggle="modal" data-bs-target="#bookChart">
+                        <button type="button" class="btn btn-outline-success px-5 w-100" data-bs-toggle="modal"
+                            data-bs-target="#bookChart">
                             Verileri Göster
                         </button>
                         @include('includes.modals.book-chart')
                     </div>
                     <div class="mb-4">
-                        <button type="button" class="btn btn-outline-secondary px-5 w-100" data-bs-toggle="modal" data-bs-target="#modalDraw">
+                        <button type="button" class="btn btn-outline-secondary px-5 w-100" data-bs-toggle="modal"
+                            data-bs-target="#modalDraw">
                             Kura
                         </button>
                         @include('includes.modals.draw')

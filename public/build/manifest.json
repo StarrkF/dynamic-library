@@ -9,6 +9,11 @@
     "isEntry": true,
     "src": "resources/css/home.css"
   },
+  "resources/css/login.css": {
+    "file": "assets/login-2cff9834.css",
+    "isEntry": true,
+    "src": "resources/css/login.css"
+  },
   "resources/js/app.css": {
     "file": "assets/app-378e6984.css",
     "src": "resources/js/app.css"
