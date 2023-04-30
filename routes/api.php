@@ -16,8 +16,3 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::resource('chart', ChartController::class);
-Route::resource('type', TypeController::class);
-
-Route::get('draw',[BookController::class,'draw']);
