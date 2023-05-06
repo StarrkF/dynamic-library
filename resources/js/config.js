@@ -1,7 +1,11 @@
 export default function useApi() {
 
-    const index = async (endpoint) => {
-        return await axios.get(endpoint)
+    const index = async (endpoint, type = null, list_type = null, status = null, in_library = null, search = null) => {
+        return await axios.get(endpoint, { params: { byType: type, byStatus: status, byListType: list_type, byLibrary: in_library, search: search } }, {
+            headers: {
+              Accept: 'application/json'
+            }
+          })
             .then(function (response) {
                 return response.data
             })

@@ -1,4 +1,7 @@
 {
+  "_config-e723baac.js": {
+    "file": "assets/config-e723baac.js"
+  },
   "resources/css/app.css": {
     "file": "assets/app-4ed993c7.js",
     "isEntry": true,
@@ -14,6 +17,30 @@
     "isEntry": true,
     "src": "resources/css/login.css"
   },
+  "resources/js/Vue/Pages/Books.vue": {
+    "file": "assets/Books-a200cf61.js",
+    "imports": [
+      "_config-e723baac.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Vue/Pages/Books.vue"
+  },
+  "resources/js/Vue/Pages/Home.css": {
+    "file": "assets/Home-1a592033.css",
+    "src": "resources/js/Vue/Pages/Home.css"
+  },
+  "resources/js/Vue/Pages/Home.vue": {
+    "css": [
+      "assets/Home-1a592033.css"
+    ],
+    "file": "assets/Home-751554ed.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Vue/Pages/Home.vue"
+  },
   "resources/js/app.css": {
     "file": "assets/app-378e6984.css",
     "src": "resources/js/app.css"
@@ -22,12 +49,19 @@
     "css": [
       "assets/app-378e6984.css"
     ],
-    "file": "assets/app-bd5610ee.js",
+    "dynamicImports": [
+      "resources/js/Vue/Pages/Home.vue",
+      "resources/js/Vue/Pages/Books.vue"
+    ],
+    "file": "assets/app-a7c6b15a.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
   "resources/js/pages/books.js": {
-    "file": "assets/books-79197551.js",
+    "file": "assets/books-172051e7.js",
+    "imports": [
+      "_config-e723baac.js"
+    ],
     "isEntry": true,
     "src": "resources/js/pages/books.js"
   }

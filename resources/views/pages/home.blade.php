@@ -3,7 +3,18 @@
     @vite('resources/css/home.css')
 @endsection
 @section('content')
-    <div class="container-md">
+
+    <div class="container d-flex justify-content-between mb-5">
+        <div class="btn btn-lg btn-outline-success"><i class="fa-solid fa-user"></i>
+            {{ Auth::user()->name }}
+        </div>
+
+        {{-- <h4>{{ Auth::user()->name }}</h4> --}}
+        <a href="{{ route('logout') }}" class="btn btn-lg btn-outline-danger">Çıkış Yap</a>
+    </div>
+
+    <div id="app"/>
+    {{-- <div class="container-md">
         <div class="card shadow-lg">
             <div class="card-header d-flex justify-content-evenly">
                 <h1>Kütüphane</h1>
@@ -51,5 +62,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection

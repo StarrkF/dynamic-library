@@ -13,15 +13,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $types = Type::select('id','name')->get();
+        return $types;
     }
 
     /**
@@ -29,48 +22,34 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            Type::create(['name' => $request->type_name ]);
-            return back()->with('success', 'Yeni Kitap Türü Eklendi');
-        } catch (\Throwable $th) {
-            return back()->with('error', 'Kitap Türü Eklenemedi');
-        }
-
+        $type = new Type(['name' => $request->name]);
+        $type->save();
+        return $type;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Type $type)
     {
-        return new JsonResponse(Type::find($id));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {
-        //
+        return $type;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Type $type)
     {
-        return Type::where('id', $id)->update(['name' => $request->name ])
-        ? back()->with('success', 'Kitap Türü Güncellendi')
-        : back()->with('success', 'Kitap Türü Güncellenemedi');
+        $type->fill(['name' => $request->name]);
+        $type->save();
+        return $type;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Type $type)
     {
-        return Type::where('id', $id)->delete()
-        ? back()->with('success', 'Kitap Türü Silindi')
-        : back()->with('success', 'Kitap Türü Silinemedi');
+        return $type->delete() ? new JsonResponse(['data' => 'success']) : new JsonResponse(['data' => 'failed'], 400);
     }
 }
