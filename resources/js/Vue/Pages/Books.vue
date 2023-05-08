@@ -3,6 +3,7 @@ import useConfig from '../../config';
 import { useRouter, useRoute } from 'vue-router'
 import { ref, onMounted, watchEffect } from 'vue';
 import Filters from '../Components/Filters.vue'
+import BookAdd from '../Components/BookAdd.vue';
 
 const books = ref(null)
 const filterParams = ref({})
@@ -40,6 +41,10 @@ onMounted(() => {
         <div class="card-header">
         </div>
         <div class="card-body">
+            <div class="d-flex justify-content-between mb-4">
+                <book-add></book-add>
+            </div>
+
         <filters :get-books="getBooks" :filter-params="filterParams"></filters>
 
             <div v-if="loading" class="d-flex justify-content-center align-items-center" style="height: 70vh;">

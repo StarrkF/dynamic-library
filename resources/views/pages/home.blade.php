@@ -4,13 +4,16 @@
 @endsection
 @section('content')
 
-    <div class="container d-flex justify-content-between mb-5">
+    <div class="d-flex justify-content-between mb-5">
         <div class="btn btn-lg btn-outline-success"><i class="fa-solid fa-user"></i>
             {{ Auth::user()->name }}
         </div>
 
-        {{-- <h4>{{ Auth::user()->name }}</h4> --}}
-        <a href="{{ route('logout') }}" class="btn btn-lg btn-outline-danger">Çıkış Yap</a>
+        <div class="d-flex gap-2">
+            <a href="{{ route('get.home') }}" class="btn btn-lg btn-outline-primary">Anasayfa</a>
+            <a href="{{ route('logout') }}" class="btn btn-lg btn-outline-danger">Çıkış Yap</a>
+        </div>
+
     </div>
 
     <div id="app"/>
