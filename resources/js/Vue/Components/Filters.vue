@@ -18,7 +18,6 @@ const getFilters = () => {
 
     index('type').then((response) => {
         selectbox.value.types = response
-        console.log(response)
     })
 
     index('status').then((response) => {

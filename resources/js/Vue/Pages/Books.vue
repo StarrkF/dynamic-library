@@ -6,27 +6,52 @@ import Filters from '../Components/Filters.vue'
 import BookAdd from '../Components/BookAdd.vue';
 
 const books = ref(null)
+const book = ref({})
 const filterParams = ref({})
 const loading = ref(false)
+const bookAddComp = ref()
 
-const { index, show, update } = useConfig();
+const { index, show, destroy } = useConfig();
 const route = useRoute()
 
 
 const getBooks = () => {
     loading.value = true
-
     index('books',
-    filterParams.value.byType,
-    filterParams.value.byListType,
-    filterParams.value.byStatus,
-    filterParams.value.byLibrary,
-    filterParams.value.search)
-    .then((response) => {
-        books.value = response.data
-        loading.value = false
-    })
+        filterParams.value.byType,
+        filterParams.value.byListType,
+        filterParams.value.byStatus,
+        filterParams.value.byLibrary,
+        filterParams.value.search)
+        .then((response) => {
+            books.value = response.data
+            loading.value = false
+        })
+}
 
+const showBook = (id) => {
+    show('books', id).then((response) => {
+        const parsedBook = {
+            ...response.data,
+            status: response.data.status.id,
+            list_type_id: response.data.list_type.id,
+            in_library: response.data.in_library.id,
+            type_id: response.data.list_type.id,
+            edit: true
+        }
+        bookAddComp.value.book = parsedBook
+        window.scrollTo(0, 0)
+    })
+}
+
+const deleteBook = (id) => {
+    if (confirm('Silmek istediğine emin misin?')) {
+        destroy('books', id).then((response) => {
+            if(response) {
+                getBooks()
+            }
+        })
+    }
 }
 
 onMounted(() => {
@@ -42,10 +67,10 @@ onMounted(() => {
         </div>
         <div class="card-body">
             <div class="d-flex justify-content-between mb-4">
-                <book-add></book-add>
+                <book-add :get-books="getBooks" ref="bookAddComp" :edit-book="book"></book-add>
             </div>
 
-        <filters :get-books="getBooks" :filter-params="filterParams"></filters>
+            <filters :get-books="getBooks" :filter-params="filterParams"></filters>
 
             <div v-if="loading" class="d-flex justify-content-center align-items-center" style="height: 70vh;">
                 <div class="spinner-border" role="status">
@@ -72,7 +97,7 @@ onMounted(() => {
                             <th scope="col">Listelenecek Yer</th>
                             <th scope="col">Durum</th>
                             <th scope="col">Kütüphanede</th>
-                            <th scope="col">İşlem</th>
+                            <th scope="col" class="text-center">İşlem</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,13 +116,15 @@ onMounted(() => {
                             <td>{{ book.status?.name }}</td>
                             <td>{{ book.in_library?.name }}</td>
                             <td>
-                                <button type="button" class="btn btn-outline-dark">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                </button>
-                                <a href="" onclick=" return confirm('Silmek istediğine emin misin?');"
-                                    class="btn btn-outline-danger">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-dark" @click="showBook(book.id)">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </button>
+                                    <button class="btn btn-outline-danger" @click="deleteBook(book.id)">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </div>
+
                             </td>
                         </tr>
                     </tbody>

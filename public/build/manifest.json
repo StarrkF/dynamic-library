@@ -1,6 +1,12 @@
 {
-  "_config-e723baac.js": {
-    "file": "assets/config-e723baac.js"
+  "_config-6fb72c73.js": {
+    "file": "assets/config-6fb72c73.js",
+    "imports": [
+      "_reactivity.esm-bundler-ec77e152.js"
+    ]
+  },
+  "_reactivity.esm-bundler-ec77e152.js": {
+    "file": "assets/reactivity.esm-bundler-ec77e152.js"
   },
   "resources/css/app.css": {
     "file": "assets/app-4ed993c7.js",
@@ -17,11 +23,19 @@
     "isEntry": true,
     "src": "resources/css/login.css"
   },
+  "resources/js/Vue/Pages/Books.css": {
+    "file": "assets/Books-b936d099.css",
+    "src": "resources/js/Vue/Pages/Books.css"
+  },
   "resources/js/Vue/Pages/Books.vue": {
-    "file": "assets/Books-a200cf61.js",
+    "css": [
+      "assets/Books-b936d099.css"
+    ],
+    "file": "assets/Books-4577e2f0.js",
     "imports": [
-      "_config-e723baac.js",
-      "resources/js/app.js"
+      "_config-6fb72c73.js",
+      "resources/js/app.js",
+      "_reactivity.esm-bundler-ec77e152.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Vue/Pages/Books.vue"
@@ -34,9 +48,10 @@
     "css": [
       "assets/Home-1a592033.css"
     ],
-    "file": "assets/Home-751554ed.js",
+    "file": "assets/Home-00d29f10.js",
     "imports": [
-      "resources/js/app.js"
+      "resources/js/app.js",
+      "_reactivity.esm-bundler-ec77e152.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Vue/Pages/Home.vue"
@@ -53,14 +68,18 @@
       "resources/js/Vue/Pages/Home.vue",
       "resources/js/Vue/Pages/Books.vue"
     ],
-    "file": "assets/app-a7c6b15a.js",
+    "file": "assets/app-7bdc9bec.js",
+    "imports": [
+      "_reactivity.esm-bundler-ec77e152.js"
+    ],
     "isEntry": true,
     "src": "resources/js/app.js"
   },
   "resources/js/pages/books.js": {
-    "file": "assets/books-172051e7.js",
+    "file": "assets/books-400bf5d1.js",
     "imports": [
-      "_config-e723baac.js"
+      "_config-6fb72c73.js",
+      "_reactivity.esm-bundler-ec77e152.js"
     ],
     "isEntry": true,
     "src": "resources/js/pages/books.js"

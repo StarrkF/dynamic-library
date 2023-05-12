@@ -3,6 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
+// use Illuminate\Http\Exceptions\HttpResponseException;
+// use Illuminate\Contracts\Validation\Validator;
 
 class BookRequest extends FormRequest
 {
@@ -22,12 +26,12 @@ class BookRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => ['required', Rule::unique('books')],
+            'author' => 'required',
             'type_id' => 'required',
             'list_type_id' => 'required',
             'status' =>  'nullable',
             'in_library' => 'nullable',
-            'name' => 'nullable',
-            'author' => 'nullable',
             'author_slug' => 'nullable',
             'publisher' => 'nullable',
             'page_count' => 'nullable',
@@ -35,4 +39,23 @@ class BookRequest extends FormRequest
             'read_date' => 'nullable'
         ];
     }
+
+    public function attributes(): array
+    {
+        return [
+            'name' => 'İsim',
+            'author' => 'Yazar',
+            'type_id' => 'Kitap Türü',
+            'list_type_id' => 'Listelenecek Bölüm'
+        ];
+    }
+
+    // public function failedValidation(Validator $validator)
+    // {
+    //     throw new HttpResponseException(response()->json([
+    //         'success'   => false,
+    //         'message'   => 'Doğrulama Hatası',
+    //         'data'      => $validator->errors()
+    //     ]));
+    // }
 }

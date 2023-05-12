@@ -14,7 +14,7 @@ class BookController extends Controller
 {
     public function index()
     {
-        $books = Book::where('user_id', Auth::id())->filter()->paginate(100);
+        $books = Book::where('user_id', Auth::id())->filter()->orderBy('id', 'desc')->paginate(100);
         return BookResource::collection($books);
     }
 
@@ -25,6 +25,7 @@ class BookController extends Controller
     {
         $book = new Book($request->validated());
         $book->user_id = auth()->user()->id;
+        $book->author_slug = $request->author;
         $book->save();
         return new BookResource($book);
     }
@@ -43,6 +44,7 @@ class BookController extends Controller
     public function update(BookRequest $request, Book $book)
     {
         $book->fill($request->validated());
+        $book->author_slug = $request->author;
         $book->save();
         return new BookResource($book);
     }

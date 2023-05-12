@@ -1,4 +1,8 @@
+import { ref } from 'vue'
+
 export default function useApi() {
+
+    const errors = ref('')
 
     const index = async (endpoint, type = null, list_type = null, status = null, in_library = null, search = null) => {
         return await axios.get(endpoint, { params: { byType: type, byStatus: status, byListType: list_type, byLibrary: in_library, search: search } }, {
@@ -27,25 +31,30 @@ export default function useApi() {
     }
 
     const store = async (endpoint, data) => {
+        errors.value = ''
         return await axios.post(endpoint, data)
             .then(function (response) {
                 return response.data
             })
-            .catch(function (error) {
-                return error.message
+            .catch(function (e) {
+                if(e.response.status === 422) {
+                    errors.value = e.response.data.errors
+                }
             })
     }
 
     const update = async (endpoint, parameter, data) => {
+        errors.value = ''
         return await axios.put(endpoint + '/' + parameter, data)
             .then(function (response) {
                 return response.data
             })
-            .catch(function (error) {
-                return error.message
+            .catch(function (e) {
+                if(e.response.status === 422) {
+                    errors.value = e.response.data.errors
+                }
             })
     }
-
 
     const destroy = async (endpoint, parameter) => {
         return await axios.delete(endpoint + '/' + parameter)
@@ -112,6 +121,7 @@ export default function useApi() {
         destroy,
         colorPallete,
         darkerColors,
-        randomColor
+        randomColor,
+        errors
     }
 }
