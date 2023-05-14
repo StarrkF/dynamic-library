@@ -1,6 +1,6 @@
 {
-  "_config-6fb72c73.js": {
-    "file": "assets/config-6fb72c73.js",
+  "_config-37966956.js": {
+    "file": "assets/config-37966956.js",
     "imports": [
       "_reactivity.esm-bundler-ec77e152.js"
     ]
@@ -24,16 +24,16 @@
     "src": "resources/css/login.css"
   },
   "resources/js/Vue/Pages/Books.css": {
-    "file": "assets/Books-b936d099.css",
+    "file": "assets/Books-38dde1da.css",
     "src": "resources/js/Vue/Pages/Books.css"
   },
   "resources/js/Vue/Pages/Books.vue": {
     "css": [
-      "assets/Books-b936d099.css"
+      "assets/Books-38dde1da.css"
     ],
-    "file": "assets/Books-4577e2f0.js",
+    "file": "assets/Books-50703bfa.js",
     "imports": [
-      "_config-6fb72c73.js",
+      "_config-37966956.js",
       "resources/js/app.js",
       "_reactivity.esm-bundler-ec77e152.js"
     ],
@@ -48,13 +48,22 @@
     "css": [
       "assets/Home-1a592033.css"
     ],
-    "file": "assets/Home-00d29f10.js",
+    "file": "assets/Home-08879b2e.js",
     "imports": [
       "resources/js/app.js",
       "_reactivity.esm-bundler-ec77e152.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Vue/Pages/Home.vue"
+  },
+  "resources/js/Vue/Pages/Types.vue": {
+    "file": "assets/Types-183dce98.js",
+    "imports": [
+      "resources/js/app.js",
+      "_reactivity.esm-bundler-ec77e152.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Vue/Pages/Types.vue"
   },
   "resources/js/app.css": {
     "file": "assets/app-378e6984.css",
@@ -66,9 +75,10 @@
     ],
     "dynamicImports": [
       "resources/js/Vue/Pages/Home.vue",
-      "resources/js/Vue/Pages/Books.vue"
+      "resources/js/Vue/Pages/Books.vue",
+      "resources/js/Vue/Pages/Types.vue"
     ],
-    "file": "assets/app-7bdc9bec.js",
+    "file": "assets/app-de17eb14.js",
     "imports": [
       "_reactivity.esm-bundler-ec77e152.js"
     ],
@@ -76,9 +86,9 @@
     "src": "resources/js/app.js"
   },
   "resources/js/pages/books.js": {
-    "file": "assets/books-400bf5d1.js",
+    "file": "assets/books-00ec6879.js",
     "imports": [
-      "_config-6fb72c73.js",
+      "_config-37966956.js",
       "_reactivity.esm-bundler-ec77e152.js"
     ],
     "isEntry": true,

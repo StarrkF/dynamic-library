@@ -4,12 +4,32 @@ import { useRouter, useRoute } from 'vue-router'
 import { ref, onMounted, watchEffect } from 'vue';
 import Filters from '../Components/Filters.vue'
 import BookAdd from '../Components/BookAdd.vue';
+import Pagination from '../Components/Pagination.vue';
 
 const books = ref(null)
 const book = ref({})
 const filterParams = ref({})
 const loading = ref(false)
 const bookAddComp = ref()
+const pageInfo = ref({})
+const tableHead = {
+    id: 'ID',
+    name: 'Kitap',
+    author: 'Yazar',
+    publisher: 'Yayıncı',
+    page_count: 'Sayfa',
+    type: 'Tür',
+    buy_date: 'Satın Alma',
+    read_date: 'Okunma',
+    list_type: 'Listelenecek Yer',
+    status: 'Durum',
+    in_library: 'Kütüphanede'
+}
+
+const orderBy = ref({
+    row: 'id',
+    type: 'asc',
+})
 
 const { index, show, destroy } = useConfig();
 const route = useRoute()
@@ -17,26 +37,48 @@ const route = useRoute()
 
 const getBooks = () => {
     loading.value = true
-    index('books',
-        filterParams.value.byType,
-        filterParams.value.byListType,
-        filterParams.value.byStatus,
-        filterParams.value.byLibrary,
-        filterParams.value.search)
+
+    const params = {
+        page: pageInfo.value.currentPage,
+        byPage: filterParams.value.byPage,
+        byType: filterParams.value.byType,
+        byListType: filterParams.value.byListType,
+        byStatus: filterParams.value.byStatus,
+        byLibrary: filterParams.value.byLibrary,
+        search: filterParams.value.search,
+        orderBy: orderBy.value.row,
+        orderType: orderBy.value.type
+    }
+    index('books', params)
         .then((response) => {
             books.value = response.data
             loading.value = false
+            pageInfo.value = response.meta
         })
+}
+
+const setPage = (page) => {
+    pageInfo.value.currentPage = page
+    getBooks()
+}
+
+const setOrder = (row) => {
+    orderBy.value = {
+        row: row,
+        type: orderBy.value.type == 'asc' ? 'desc' : 'asc'
+    }
+    getBooks()
 }
 
 const showBook = (id) => {
     show('books', id).then((response) => {
+        let book = response.data
         const parsedBook = {
-            ...response.data,
-            status: response.data.status.id,
-            list_type_id: response.data.list_type.id,
-            in_library: response.data.in_library.id,
-            type_id: response.data.list_type.id,
+            ...book,
+            status: book.status?.id,
+            list_type_id: book.list_type.id,
+            in_library: book.in_library?.id,
+            type_id: book.list_type.id,
             edit: true
         }
         bookAddComp.value.book = parsedBook
@@ -82,21 +124,13 @@ onMounted(() => {
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">
-                                <i role="button" id="asc" class="orderBy fa-solid fa-arrow-up fa-xs"></i>
-                                <i role="button" id="desc" class="orderBy fa-solid fa-arrow-down fa-xs"></i>
-                                ID
+
+                            <th  v-for="(value, key) in tableHead" :key="key" scope="col" @click="setOrder(key)" role="button">
+                                <div class="d-flex gap-1">
+                                    <span><i role="button" class="fa-solid fa-sort fa-xs"></i></span>
+                                    <span>{{ value }}</span>
+                                </div>
                             </th>
-                            <th scope="col">Kitap</th>
-                            <th scope="col">Yazar</th>
-                            <th scope="col">Yayıncı</th>
-                            <th scope="col">Sayfa</th>
-                            <th scope="col">Tür</th>
-                            <th scope="col">Satın Alma</th>
-                            <th scope="col">Okunma</th>
-                            <th scope="col">Listelenecek Yer</th>
-                            <th scope="col">Durum</th>
-                            <th scope="col">Kütüphanede</th>
                             <th scope="col" class="text-center">İşlem</th>
                         </tr>
                     </thead>
@@ -130,6 +164,22 @@ onMounted(() => {
                     </tbody>
                 </table>
             </div>
+            <Pagination :page-info="pageInfo" :get-data="setPage"/>
         </div>
     </div>
 </template>
+
+<style scoped>
+
+.table-responsive {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+</style>

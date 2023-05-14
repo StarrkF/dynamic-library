@@ -36,7 +36,7 @@ const getFilters = () => {
 onMounted(() => {
     getFilters()
 })
-
+props.filterParams.byPage = props.filterParams.byPage ?? 50
 </script>
 
 <template>
@@ -45,17 +45,17 @@ onMounted(() => {
         <div class="card-body">
             <div class="d-flex flex-column flex-md-row gap-4 align-items-end">
                 <div class="mb-4 w-100">
-                    <label for="perPage">Listele</label>
-                    <select id="perPage" class="form-select form-filter" required>
+                    <label>Listele</label>
+                    <select class="form-select form-filter" v-model="filterParams.byPage" @change="getBooks">
                         <option>25</option>
-                        <option selected>50</option>
+                        <option>50</option>
                         <option>100</option>
-                        <option>200</option>
+                        <option>250</option>
                     </select>
                 </div>
                 <div class="mb-4 w-100">
                     <label>Durum</label>
-                    <select class="form-select form-filter" v-model="filterParams.byStatus" @change="getBooks" required>
+                    <select class="form-select form-filter" v-model="filterParams.byStatus" @change="getBooks" >
                         <option value="">Filtreyi Temizle</option>
                         <option v-for="state in selectbox.status" :value="state.id">{{ state.name }}</option>
                     </select>
@@ -82,7 +82,7 @@ onMounted(() => {
                     </select>
                 </div>
                 <!-- <div class="mb-4 w-100">
-                    <button type="button" class="btn btn-outline-danger clearUrl">Temizle</button>
+                    <button type="button" class="btn btn-outline-danger clearUrl" @click="clearFilters">Temizle</button>
                 </div> -->
 
                 <div class="mb-4 w-100 input-group mb-4">

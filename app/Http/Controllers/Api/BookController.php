@@ -14,7 +14,11 @@ class BookController extends Controller
 {
     public function index()
     {
-        $books = Book::where('user_id', Auth::id())->filter()->orderBy('id', 'desc')->paginate(100);
+        $books = Book::where('user_id', Auth::id())
+            ->filter()
+            ->order()
+            ->paginate(request('byPage'));
+
         return BookResource::collection($books);
     }
 
