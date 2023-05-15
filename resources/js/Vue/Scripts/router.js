@@ -18,6 +18,11 @@ const router = createRouter({
             name: 'types',
             component: () => import('../pages/Types.vue')
         },
+        {
+            path: '/chart',
+            name: 'chart',
+            component: () => import('../pages/Chart.vue')
+        },
     ]
 })
 
