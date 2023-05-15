@@ -1,7 +1,11 @@
+import { ref } from 'vue'
+
 export default function useApi() {
 
-    const index = async (endpoint) => {
-        return await axios.get(endpoint)
+    const errors = ref('')
+
+    const index = async (endpoint, params) => {
+        return await axios.get(endpoint, { params })
             .then(function (response) {
                 return response.data
             })
@@ -23,25 +27,30 @@ export default function useApi() {
     }
 
     const store = async (endpoint, data) => {
+        errors.value = ''
         return await axios.post(endpoint, data)
             .then(function (response) {
                 return response.data
             })
-            .catch(function (error) {
-                return error.message
+            .catch(function (e) {
+                if(e.response.status === 422) {
+                    errors.value = e.response.data.errors
+                }
             })
     }
 
     const update = async (endpoint, parameter, data) => {
+        errors.value = ''
         return await axios.put(endpoint + '/' + parameter, data)
             .then(function (response) {
                 return response.data
             })
-            .catch(function (error) {
-                return error.message
+            .catch(function (e) {
+                if(e.response.status === 422) {
+                    errors.value = e.response.data.errors
+                }
             })
     }
-
 
     const destroy = async (endpoint, parameter) => {
         return await axios.delete(endpoint + '/' + parameter)
@@ -108,6 +117,7 @@ export default function useApi() {
         destroy,
         colorPallete,
         darkerColors,
-        randomColor
+        randomColor,
+        errors
     }
 }

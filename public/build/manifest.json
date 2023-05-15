@@ -1,4 +1,20 @@
 {
+  "_BaseInput-f2ca505a.js": {
+    "file": "assets/BaseInput-f2ca505a.js",
+    "imports": [
+      "resources/js/app.js",
+      "_reactivity.esm-bundler-ec77e152.js"
+    ]
+  },
+  "_config-37966956.js": {
+    "file": "assets/config-37966956.js",
+    "imports": [
+      "_reactivity.esm-bundler-ec77e152.js"
+    ]
+  },
+  "_reactivity.esm-bundler-ec77e152.js": {
+    "file": "assets/reactivity.esm-bundler-ec77e152.js"
+  },
   "resources/css/app.css": {
     "file": "assets/app-4ed993c7.js",
     "isEntry": true,
@@ -14,6 +30,58 @@
     "isEntry": true,
     "src": "resources/css/login.css"
   },
+  "resources/js/Vue/Pages/Books.css": {
+    "file": "assets/Books-0af76586.css",
+    "src": "resources/js/Vue/Pages/Books.css"
+  },
+  "resources/js/Vue/Pages/Books.vue": {
+    "css": [
+      "assets/Books-0af76586.css"
+    ],
+    "file": "assets/Books-53fe19c4.js",
+    "imports": [
+      "_config-37966956.js",
+      "resources/js/app.js",
+      "_reactivity.esm-bundler-ec77e152.js",
+      "_BaseInput-f2ca505a.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Vue/Pages/Books.vue"
+  },
+  "resources/js/Vue/Pages/Home.css": {
+    "file": "assets/Home-1a592033.css",
+    "src": "resources/js/Vue/Pages/Home.css"
+  },
+  "resources/js/Vue/Pages/Home.vue": {
+    "css": [
+      "assets/Home-1a592033.css"
+    ],
+    "file": "assets/Home-d9aca749.js",
+    "imports": [
+      "resources/js/app.js",
+      "_reactivity.esm-bundler-ec77e152.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Vue/Pages/Home.vue"
+  },
+  "resources/js/Vue/Pages/Types.css": {
+    "file": "assets/Types-d3e3e0ab.css",
+    "src": "resources/js/Vue/Pages/Types.css"
+  },
+  "resources/js/Vue/Pages/Types.vue": {
+    "css": [
+      "assets/Types-d3e3e0ab.css"
+    ],
+    "file": "assets/Types-0606e148.js",
+    "imports": [
+      "_config-37966956.js",
+      "_BaseInput-f2ca505a.js",
+      "resources/js/app.js",
+      "_reactivity.esm-bundler-ec77e152.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Vue/Pages/Types.vue"
+  },
   "resources/js/app.css": {
     "file": "assets/app-378e6984.css",
     "src": "resources/js/app.css"
@@ -22,12 +90,24 @@
     "css": [
       "assets/app-378e6984.css"
     ],
-    "file": "assets/app-bd5610ee.js",
+    "dynamicImports": [
+      "resources/js/Vue/Pages/Home.vue",
+      "resources/js/Vue/Pages/Books.vue",
+      "resources/js/Vue/Pages/Types.vue"
+    ],
+    "file": "assets/app-64bef347.js",
+    "imports": [
+      "_reactivity.esm-bundler-ec77e152.js"
+    ],
     "isEntry": true,
     "src": "resources/js/app.js"
   },
   "resources/js/pages/books.js": {
-    "file": "assets/books-79197551.js",
+    "file": "assets/books-00ec6879.js",
+    "imports": [
+      "_config-37966956.js",
+      "_reactivity.esm-bundler-ec77e152.js"
+    ],
     "isEntry": true,
     "src": "resources/js/pages/books.js"
   }

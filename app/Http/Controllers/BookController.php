@@ -132,8 +132,10 @@ class BookController extends Controller
     public function draw()
     {
         $data  = [];
-        while (empty($data)) {
+        $i = 0;
+        while (empty($data) && $i<1000) {
             $data = Book::where('user_id', Auth::id())->filter()->with('type')->inRandomOrder()->first();
+            $i++;
         }
         return new BookResource($data);
     }
