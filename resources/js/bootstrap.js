@@ -11,9 +11,7 @@ import App from './Vue/App.vue'
 
 import axios from 'axios';
 import Chart from 'chart.js/auto';
-import jQuery from 'jquery';
 
-window.$ = jQuery;
 window.axios = axios;
 window.Chart = Chart;
 
