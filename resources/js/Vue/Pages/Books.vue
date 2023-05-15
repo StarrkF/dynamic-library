@@ -16,10 +16,10 @@ const pageInfo = ref({})
 const tableHead = {
     id: 'ID',
     name: 'Kitap',
+    type: 'Tür',
     author: 'Yazar',
     publisher: 'Yayıncı',
     page_count: 'Sayfa',
-    type: 'Tür',
     buy_date: 'Satın Alma',
     read_date: 'Okunma',
     list_type: 'Listelenecek Yer',
@@ -110,18 +110,30 @@ onMounted(() => {
         </div>
         <div class="card-body">
             <div class="d-flex gap-2 mb-4">
-                <a class="btn btn-outline-info px-5" data-bs-toggle="collapse" href="#bookAdd" role="button">Kitap Ekle</a>
+                <a class="btn btn-outline-info px-5" data-bs-toggle="collapse" href="#bookAdd" role="button">
+                    Kitap Ekle
+                </a>
 
                 <router-link to="/types">
                     <button class="btn btn-outline-warning px-5">Kitap Türleri</button>
                 </router-link>
-                <a class="btn btn-outline-success px-5" data-bs-toggle="collapse" href="#getDraw" role="button">Kura</a>
+
+                <a class="btn btn-outline-success px-5" data-bs-toggle="collapse" href="#getDraw" role="button">
+                    Kura
+                </a>
+
+                <router-link to="/chart">
+                    <button class="btn btn-outline-primary px-5">Veriler</button>
+                </router-link>
 
             </div>
             <book-add :get-books="getBooks" ref="bookAddComp" :edit-book="book"></book-add>
             <Draw/>
             <filters :get-books="getBooks" :filter-params="filterParams"></filters>
 
+            <div class="mt-3">
+                <small><strong>Toplam Kayıt:</strong>  {{ pageInfo.total }}</small>
+            </div>
             <div v-if="loading" class="d-flex justify-content-center align-items-center" style="height: 70vh;">
                 <div class="spinner-border" role="status">
                     <span class="sr-only">Loading...</span>
@@ -145,13 +157,11 @@ onMounted(() => {
                     <tbody>
                         <tr v-for="book in books">
                             <th>{{ book.id }}</th>
-                            <td>{{ book.name }}</td>
-                            <td>
-                                <a>{{ book.author }}</a>
-                            </td>
+                            <td width="300">{{ book.name }}</td>
+                            <td width="250">{{ book.type?.name }}</td>
+                            <td width="200">{{ book.author }}</td>
                             <td>{{ book.publisher }}</td>
                             <td>{{ book.page_count }}</td>
-                            <td>{{ book.type?.name }}</td>
                             <td>{{ book.buy_date }}</td>
                             <td>{{ book.read_date }}</td>
                             <td>{{ book.list_type?.name }}</td>
