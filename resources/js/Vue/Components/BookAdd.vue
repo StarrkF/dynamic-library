@@ -19,8 +19,8 @@ const successAlert = ref('')
 
 const GetSelects = () => {
 
-    index('type').then((response) => {
-        selectbox.value.types = response
+    index('types').then((response) => {
+        selectbox.value.types = response.data
     })
 
     index('status').then((response) => {
@@ -73,73 +73,67 @@ onMounted(() => {
 </script>
 
 <template>
-    <div>
-        <a class="btn btn-outline-info px-5" data-bs-toggle="collapse" href="#bookAdd" role="button">
-            Kitap Ekle
-        </a>
-        <div :class="['collapse mt-2', { 'show': book.edit }]" id="bookAdd">
-            <alert v-if="errors" :message="errors"></alert>
-            <alert v-if="successAlert" :message="successAlert" type="success"></alert>
-            <div class="card shadow">
-                <div class="card-body">
-                    <form @submit.prevent="book.edit ? bookUpdate() : bookAdd()">
-                        <div class="row">
+    <div :class="['collapse my-2', { 'show': book.edit }]" id="bookAdd">
+        <alert v-if="errors" :message="errors"></alert>
+        <alert v-if="successAlert" :message="successAlert" type="success"></alert>
+        <div class="card shadow">
+            <div class="card-body">
+                <form @submit.prevent="book.edit ? bookUpdate() : bookAdd()">
+                    <div class="row">
 
-                            <div class="mb-4 col-md-6">
-                                <BaseInput label="Kitap Adı" v-model="book.name" />
-                            </div>
-
-                            <div class="mb-4 col-md-6">
-                                <BaseInput label="Yazar Adı" v-model="book.author" />
-                            </div>
-
-                            <div class="mb-4 col-md-6">
-                                <BaseInput label="Yayın Evi" v-model="book.publisher" />
-                            </div>
-
-                            <div class="mb-4 col-md-6">
-                                <BaseInput type="number" label="Sayfa Sayısı" v-model="book.page_count" />
-                            </div>
-
-                            <div class="mb-4 col-md-6">
-                                <BaseInput type="date" label="Satın Alma Tarihi" v-model="book.buy_date" />
-                            </div>
-
-                            <div class="mb-4 col-md-6">
-                                <BaseInput type="date" label="Okunma Tarihi" v-model="book.read_date" />
-                            </div>
-
-                            <div class="mb-4 col-md-6">
-                                <BaseSelect :options="selectbox.types" v-model="book.type_id" label="Kitap Türü" />
-                            </div>
-
-                            <div class="mb-4 col-md-6">
-                                <BaseSelect :options="selectbox.list_types" v-model="book.list_type_id"
-                                    label="Listeleneceği Yer" />
-                            </div>
-
-                            <div class="mb-4 col-md-6">
-                                <BaseSelect :options="selectbox.status" v-model="book.status" label="Durum" />
-                            </div>
-
-                            <div class="mb-4 col-md-6">
-                                <BaseSelect :options="selectbox.libraries" v-model="book.in_library" label="Kütüphanede" />
-                            </div>
-
-                            <div v-if="book.edit" class="mt-4 d-flex gap-2 justify-content-end">
-                                <button @click="cancel" class="btn btn-danger">Vazgeç</button>
-                                <button type="submit" class="btn btn-dark">Kaydet</button>
-                            </div>
-
-                            <div v-else class="mt-4">
-                                <button type="submit" class="btn btn-primary">Ekle</button>
-                            </div>
-
+                        <div class="mb-4 col-md-6">
+                            <BaseInput label="Kitap Adı" v-model="book.name" />
                         </div>
-                    </form>
-                </div>
-            </div>
 
+                        <div class="mb-4 col-md-6">
+                            <BaseInput label="Yazar Adı" v-model="book.author" />
+                        </div>
+
+                        <div class="mb-4 col-md-6">
+                            <BaseInput label="Yayın Evi" v-model="book.publisher" />
+                        </div>
+
+                        <div class="mb-4 col-md-6">
+                            <BaseInput type="number" label="Sayfa Sayısı" v-model="book.page_count" />
+                        </div>
+
+                        <div class="mb-4 col-md-6">
+                            <BaseInput type="date" label="Satın Alma Tarihi" v-model="book.buy_date" />
+                        </div>
+
+                        <div class="mb-4 col-md-6">
+                            <BaseInput type="date" label="Okunma Tarihi" v-model="book.read_date" />
+                        </div>
+
+                        <div class="mb-4 col-md-6">
+                            <BaseSelect :options="selectbox.types" v-model="book.type_id" label="Kitap Türü" />
+                        </div>
+
+                        <div class="mb-4 col-md-6">
+                            <BaseSelect :options="selectbox.list_types" v-model="book.list_type_id"
+                                label="Listeleneceği Yer" />
+                        </div>
+
+                        <div class="mb-4 col-md-6">
+                            <BaseSelect :options="selectbox.status" v-model="book.status" label="Durum" />
+                        </div>
+
+                        <div class="mb-4 col-md-6">
+                            <BaseSelect :options="selectbox.libraries" v-model="book.in_library" label="Kütüphanede" />
+                        </div>
+
+                        <div v-if="book.edit" class="mt-4 d-flex gap-2 justify-content-end">
+                            <button @click="cancel" class="btn btn-danger">Vazgeç</button>
+                            <button type="submit" class="btn btn-dark">Kaydet</button>
+                        </div>
+
+                        <div v-else class="mt-4">
+                            <button type="submit" class="btn btn-primary">Ekle</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </template>

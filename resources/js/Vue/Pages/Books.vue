@@ -5,6 +5,7 @@ import { ref, onMounted, watchEffect } from 'vue';
 import Filters from '../Components/Filters.vue'
 import BookAdd from '../Components/BookAdd.vue';
 import Pagination from '../Components/Pagination.vue';
+import Draw from '../Components/Draw.vue';
 
 const books = ref(null)
 const book = ref({})
@@ -108,10 +109,17 @@ onMounted(() => {
         <div class="card-header">
         </div>
         <div class="card-body">
-            <div class="d-flex justify-content-between mb-4">
-                <book-add :get-books="getBooks" ref="bookAddComp" :edit-book="book"></book-add>
-            </div>
+            <div class="d-flex gap-2 mb-4">
+                <a class="btn btn-outline-info px-5" data-bs-toggle="collapse" href="#bookAdd" role="button">Kitap Ekle</a>
 
+                <router-link to="/types">
+                    <button class="btn btn-outline-warning px-5">Kitap Türleri</button>
+                </router-link>
+                <a class="btn btn-outline-success px-5" data-bs-toggle="collapse" href="#getDraw" role="button">Kura</a>
+
+            </div>
+            <book-add :get-books="getBooks" ref="bookAddComp" :edit-book="book"></book-add>
+            <Draw/>
             <filters :get-books="getBooks" :filter-params="filterParams"></filters>
 
             <div v-if="loading" class="d-flex justify-content-center align-items-center" style="height: 70vh;">

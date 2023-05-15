@@ -1,4 +1,11 @@
 {
+  "_BaseInput-97a001e1.js": {
+    "file": "assets/BaseInput-97a001e1.js",
+    "imports": [
+      "resources/js/app.js",
+      "_reactivity.esm-bundler-ec77e152.js"
+    ]
+  },
   "_config-37966956.js": {
     "file": "assets/config-37966956.js",
     "imports": [
@@ -24,18 +31,19 @@
     "src": "resources/css/login.css"
   },
   "resources/js/Vue/Pages/Books.css": {
-    "file": "assets/Books-38dde1da.css",
+    "file": "assets/Books-0af76586.css",
     "src": "resources/js/Vue/Pages/Books.css"
   },
   "resources/js/Vue/Pages/Books.vue": {
     "css": [
-      "assets/Books-38dde1da.css"
+      "assets/Books-0af76586.css"
     ],
-    "file": "assets/Books-50703bfa.js",
+    "file": "assets/Books-f88ebb9e.js",
     "imports": [
       "_config-37966956.js",
       "resources/js/app.js",
-      "_reactivity.esm-bundler-ec77e152.js"
+      "_reactivity.esm-bundler-ec77e152.js",
+      "_BaseInput-97a001e1.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Vue/Pages/Books.vue"
@@ -48,7 +56,7 @@
     "css": [
       "assets/Home-1a592033.css"
     ],
-    "file": "assets/Home-08879b2e.js",
+    "file": "assets/Home-52674d0c.js",
     "imports": [
       "resources/js/app.js",
       "_reactivity.esm-bundler-ec77e152.js"
@@ -56,9 +64,18 @@
     "isDynamicEntry": true,
     "src": "resources/js/Vue/Pages/Home.vue"
   },
+  "resources/js/Vue/Pages/Types.css": {
+    "file": "assets/Types-d3e3e0ab.css",
+    "src": "resources/js/Vue/Pages/Types.css"
+  },
   "resources/js/Vue/Pages/Types.vue": {
-    "file": "assets/Types-183dce98.js",
+    "css": [
+      "assets/Types-d3e3e0ab.css"
+    ],
+    "file": "assets/Types-f850abf1.js",
     "imports": [
+      "_config-37966956.js",
+      "_BaseInput-97a001e1.js",
       "resources/js/app.js",
       "_reactivity.esm-bundler-ec77e152.js"
     ],
@@ -78,7 +95,7 @@
       "resources/js/Vue/Pages/Books.vue",
       "resources/js/Vue/Pages/Types.vue"
     ],
-    "file": "assets/app-de17eb14.js",
+    "file": "assets/app-300efba0.js",
     "imports": [
       "_reactivity.esm-bundler-ec77e152.js"
     ],

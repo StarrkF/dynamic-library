@@ -35,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('api')->group(function () {
         Route::resource('books',ApiBookController::class);
         Route::resource('chart', ChartController::class);
-        Route::resource('type', TypeController::class);
+        Route::resource('types', TypeController::class);
         Route::get('draw', [BookController::class, 'draw']);
         Route::get('libraries', [ConstantController::class, 'libraries']);
         Route::get('status', [ConstantController::class, 'status']);

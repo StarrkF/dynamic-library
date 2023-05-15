@@ -16,8 +16,8 @@ const selectbox = ref({})
 
 const getFilters = () => {
 
-    index('type').then((response) => {
-        selectbox.value.types = response
+    index('types').then((response) => {
+        selectbox.value.types = response.data
     })
 
     index('status').then((response) => {

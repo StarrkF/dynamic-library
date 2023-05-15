@@ -14,7 +14,7 @@ class TypeController extends Controller
     public function index()
     {
         $types = Type::select('id','name')->get();
-        return $types;
+        return ['data' => $types];
     }
 
     /**
@@ -22,9 +22,11 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        $type = new Type(['name' => $request->name]);
-        $type->save();
-        return $type;
+        $type = Type::create([
+            'name' => $request->name
+        ]);
+
+        return ['data' => $type];
     }
 
     /**
@@ -32,7 +34,7 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        return $type;
+        return ['data' => $type];
     }
 
     /**
@@ -42,7 +44,7 @@ class TypeController extends Controller
     {
         $type->fill(['name' => $request->name]);
         $type->save();
-        return $type;
+        return ['data' => $type];
     }
 
     /**
