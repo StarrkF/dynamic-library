@@ -1,6 +1,6 @@
 {
-  "_BaseInput-f2ca505a.js": {
-    "file": "assets/BaseInput-f2ca505a.js",
+  "_BaseInput-50ea3ef9.js": {
+    "file": "assets/BaseInput-50ea3ef9.js",
     "imports": [
       "resources/js/app.js",
       "_reactivity.esm-bundler-ec77e152.js"
@@ -31,22 +31,31 @@
     "src": "resources/css/login.css"
   },
   "resources/js/Vue/Pages/Books.css": {
-    "file": "assets/Books-0af76586.css",
+    "file": "assets/Books-43f388aa.css",
     "src": "resources/js/Vue/Pages/Books.css"
   },
   "resources/js/Vue/Pages/Books.vue": {
     "css": [
-      "assets/Books-0af76586.css"
+      "assets/Books-43f388aa.css"
     ],
-    "file": "assets/Books-53fe19c4.js",
+    "file": "assets/Books-6e1b90e2.js",
     "imports": [
       "_config-37966956.js",
       "resources/js/app.js",
       "_reactivity.esm-bundler-ec77e152.js",
-      "_BaseInput-f2ca505a.js"
+      "_BaseInput-50ea3ef9.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Vue/Pages/Books.vue"
+  },
+  "resources/js/Vue/Pages/Chart.vue": {
+    "file": "assets/Chart-8cf4bcc1.js",
+    "imports": [
+      "resources/js/app.js",
+      "_reactivity.esm-bundler-ec77e152.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Vue/Pages/Chart.vue"
   },
   "resources/js/Vue/Pages/Home.css": {
     "file": "assets/Home-1a592033.css",
@@ -56,7 +65,7 @@
     "css": [
       "assets/Home-1a592033.css"
     ],
-    "file": "assets/Home-d9aca749.js",
+    "file": "assets/Home-adf41478.js",
     "imports": [
       "resources/js/app.js",
       "_reactivity.esm-bundler-ec77e152.js"
@@ -72,10 +81,10 @@
     "css": [
       "assets/Types-d3e3e0ab.css"
     ],
-    "file": "assets/Types-0606e148.js",
+    "file": "assets/Types-4999b320.js",
     "imports": [
       "_config-37966956.js",
-      "_BaseInput-f2ca505a.js",
+      "_BaseInput-50ea3ef9.js",
       "resources/js/app.js",
       "_reactivity.esm-bundler-ec77e152.js"
     ],
@@ -93,9 +102,10 @@
     "dynamicImports": [
       "resources/js/Vue/Pages/Home.vue",
       "resources/js/Vue/Pages/Books.vue",
-      "resources/js/Vue/Pages/Types.vue"
+      "resources/js/Vue/Pages/Types.vue",
+      "resources/js/Vue/Pages/Chart.vue"
     ],
-    "file": "assets/app-64bef347.js",
+    "file": "assets/app-0a28d494.js",
     "imports": [
       "_reactivity.esm-bundler-ec77e152.js"
     ],
