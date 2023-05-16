@@ -109,13 +109,13 @@ onMounted(() => {
         <div class="card-header">
         </div>
         <div class="card-body">
-            <div class="d-flex gap-2 mb-4">
+            <div class="d-flex flex-column flex-sm-row gap-2 mb-4">
                 <a class="btn btn-outline-info px-5" data-bs-toggle="collapse" href="#bookAdd" role="button">
                     Kitap Ekle
                 </a>
 
                 <router-link to="/types">
-                    <button class="btn btn-outline-warning px-5">Kitap Türleri</button>
+                    <button class="btn btn-outline-warning col-12 px-5">Kitap Türleri</button>
                 </router-link>
 
                 <a class="btn btn-outline-success px-5" data-bs-toggle="collapse" href="#getDraw" role="button">
@@ -123,7 +123,7 @@ onMounted(() => {
                 </a>
 
                 <router-link to="/chart">
-                    <button class="btn btn-outline-primary px-5">Veriler</button>
+                    <button class="btn btn-outline-primary col-12 px-5">Veriler</button>
                 </router-link>
 
             </div>
