@@ -11,9 +11,8 @@
 
         <div class="d-flex gap-2">
             <a href="{{ route('get.home') }}" class="btn btn-lg btn-outline-primary">Anasayfa</a>
-            <a href="{{ route('logout') }}" class="btn btn-lg btn-outline-danger">Çıkış Yap</a>
+            <a href="{{ route('logout') }}" class="btn btn-lg btn-outline-danger">Çıkış</a>
         </div>
-
     </div>
 
     <div id="app"/>

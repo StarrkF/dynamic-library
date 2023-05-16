@@ -59,7 +59,7 @@ onMounted(() => {
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <div class="mb-4">
                             <BaseSelect :options="selectbox.types" v-model="draw.byType" label="Kitap Türü" />
                         </div>
@@ -78,7 +78,7 @@ onMounted(() => {
                             <button class="btn btn-dark py-2 my-1 col-12" @click="getDraw">Kura Çek</button>
                             <button v-if="loading" class="btn btn-danger py-2 my-1 col-12" @click="resetDraw">Sıfırla</button>
                     </div>
-                    <div class="col-8">
+                    <div class="col-md-8">
                         <div v-if="loading || drawResult.name" class="card">
                             <div class="card-header">
                                 <h3 class="text-center">Seçilen Kitap</h3>

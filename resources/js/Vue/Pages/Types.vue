@@ -60,10 +60,10 @@ onMounted(() => {
         <div class="card-header">
         </div>
         <div class="card-body">
-            <div class="d-flex justify-content-between mb-4 gap-3 align-items-center">
+            <div class="d-flex flex-column flex-sm-row justify-content-between mb-3 gap-2 align-items-center">
                 <BaseInput v-model="type.name" label="Kitap Türü" is_required></BaseInput>
-                <div v-if="type.edit" class="d-flex gap-2">
-                    <button class="btn btn-outline-success px-5" @click="updateType">Kaydet</button>
+                <div v-if="type.edit" class="d-flex gap-1">
+                    <button class="btn btn-outline-success px-5" style="width: fit-content;" @click="updateType">Kaydet</button>
                     <button class="btn btn-outline-danger px-5" @click="type = {}">Vazgeç</button>
                 </div>
                 <button v-else class="btn btn-outline-dark px-5" @click="storeTypes">Ekle</button>
