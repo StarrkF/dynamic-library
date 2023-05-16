@@ -5,13 +5,16 @@
 @section('content')
 
     <div class="d-flex justify-content-between mb-5">
-        <div class="btn btn-lg btn-outline-success"><i class="fa-solid fa-user"></i>
-            {{ Auth::user()->name }}
+        <div class="d-flex gap-2">
+            <div class="btn btn-outline-success"><i class="fa-solid fa-user"></i>
+                {{ Auth::user()->name }}
+            </div>
+            <a href="/books" class="btn btn-outline-warning">Kitaplar</a>
         </div>
 
         <div class="d-flex gap-2">
-            <a href="{{ route('get.home') }}" class="btn btn-lg btn-outline-primary">Anasayfa</a>
-            <a href="{{ route('logout') }}" class="btn btn-lg btn-outline-danger">Çıkış</a>
+            <a href="{{ route('get.home') }}" class="btn btn-outline-primary">Anasayfa</a>
+            <a href="{{ route('logout') }}" class="btn btn-outline-danger">Çıkış</a>
         </div>
     </div>
 

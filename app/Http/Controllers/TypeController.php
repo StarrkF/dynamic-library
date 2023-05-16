@@ -13,7 +13,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $types = Type::select('id','name')->get();
+        $types = Type::withCount('books')->get();
         return ['data' => $types];
     }
 

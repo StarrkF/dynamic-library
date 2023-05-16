@@ -83,7 +83,7 @@ onMounted(() => {
                     </thead>
                     <tbody>
                         <tr v-for="book_type in types">
-                            <td>{{ book_type.name }}</td>
+                            <td><RouterLink :to="{name:'book-type', params:{type:book_type.id}}"><span class="badge text-bg-dark py-2 px-4">{{ book_type.name }}</span></RouterLink></td>
                             <td>
                                 <div class="d-flex justify-content-evenly gap-2">
                                     <button class="btn btn-outline-dark" @click="showType(book_type.id)">
