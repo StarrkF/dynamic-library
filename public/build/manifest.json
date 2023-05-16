@@ -1,19 +1,26 @@
 {
-  "_BaseInput-c4be6375.js": {
-    "file": "assets/BaseInput-c4be6375.js",
+  "_BaseInput-1d2760f1.js": {
+    "file": "assets/BaseInput-1d2760f1.js",
     "imports": [
       "resources/js/app.js",
-      "_reactivity.esm-bundler-ec77e152.js"
+      "_reactivity.esm-bundler-9db843ea.js"
     ]
   },
-  "_config-37966956.js": {
-    "file": "assets/config-37966956.js",
+  "_BaseSelect-14013d8c.js": {
+    "file": "assets/BaseSelect-14013d8c.js",
     "imports": [
-      "_reactivity.esm-bundler-ec77e152.js"
+      "resources/js/app.js",
+      "_reactivity.esm-bundler-9db843ea.js"
     ]
   },
-  "_reactivity.esm-bundler-ec77e152.js": {
-    "file": "assets/reactivity.esm-bundler-ec77e152.js"
+  "_config-df2164b1.js": {
+    "file": "assets/config-df2164b1.js",
+    "imports": [
+      "_reactivity.esm-bundler-9db843ea.js"
+    ]
+  },
+  "_reactivity.esm-bundler-9db843ea.js": {
+    "file": "assets/reactivity.esm-bundler-9db843ea.js"
   },
   "resources/css/app.css": {
     "file": "assets/app-4ed993c7.js",
@@ -31,28 +38,31 @@
     "src": "resources/css/login.css"
   },
   "resources/js/Vue/Pages/Books.css": {
-    "file": "assets/Books-6875c0d1.css",
+    "file": "assets/Books-142da45c.css",
     "src": "resources/js/Vue/Pages/Books.css"
   },
   "resources/js/Vue/Pages/Books.vue": {
     "css": [
-      "assets/Books-6875c0d1.css"
+      "assets/Books-142da45c.css"
     ],
-    "file": "assets/Books-264159a5.js",
+    "file": "assets/Books-5bc56453.js",
     "imports": [
-      "_config-37966956.js",
+      "_config-df2164b1.js",
       "resources/js/app.js",
-      "_reactivity.esm-bundler-ec77e152.js",
-      "_BaseInput-c4be6375.js"
+      "_reactivity.esm-bundler-9db843ea.js",
+      "_BaseInput-1d2760f1.js",
+      "_BaseSelect-14013d8c.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Vue/Pages/Books.vue"
   },
   "resources/js/Vue/Pages/Chart.vue": {
-    "file": "assets/Chart-ca233477.js",
+    "file": "assets/Chart-852faef8.js",
     "imports": [
+      "_config-df2164b1.js",
+      "_BaseSelect-14013d8c.js",
       "resources/js/app.js",
-      "_reactivity.esm-bundler-ec77e152.js"
+      "_reactivity.esm-bundler-9db843ea.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Vue/Pages/Chart.vue"
@@ -65,28 +75,28 @@
     "css": [
       "assets/Home-1a592033.css"
     ],
-    "file": "assets/Home-9888020c.js",
+    "file": "assets/Home-90405d10.js",
     "imports": [
       "resources/js/app.js",
-      "_reactivity.esm-bundler-ec77e152.js"
+      "_reactivity.esm-bundler-9db843ea.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Vue/Pages/Home.vue"
   },
   "resources/js/Vue/Pages/Types.css": {
-    "file": "assets/Types-3c4e3908.css",
+    "file": "assets/Types-64e47305.css",
     "src": "resources/js/Vue/Pages/Types.css"
   },
   "resources/js/Vue/Pages/Types.vue": {
     "css": [
-      "assets/Types-3c4e3908.css"
+      "assets/Types-64e47305.css"
     ],
-    "file": "assets/Types-bf5b83a5.js",
+    "file": "assets/Types-7d3c77d5.js",
     "imports": [
-      "_config-37966956.js",
-      "_BaseInput-c4be6375.js",
+      "_config-df2164b1.js",
+      "_BaseInput-1d2760f1.js",
       "resources/js/app.js",
-      "_reactivity.esm-bundler-ec77e152.js"
+      "_reactivity.esm-bundler-9db843ea.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Vue/Pages/Types.vue"
@@ -102,21 +112,22 @@
     "dynamicImports": [
       "resources/js/Vue/Pages/Home.vue",
       "resources/js/Vue/Pages/Books.vue",
+      "resources/js/Vue/Pages/Books.vue",
       "resources/js/Vue/Pages/Types.vue",
       "resources/js/Vue/Pages/Chart.vue"
     ],
-    "file": "assets/app-d246a722.js",
+    "file": "assets/app-8b6c39d8.js",
     "imports": [
-      "_reactivity.esm-bundler-ec77e152.js"
+      "_reactivity.esm-bundler-9db843ea.js"
     ],
     "isEntry": true,
     "src": "resources/js/app.js"
   },
   "resources/js/pages/books.js": {
-    "file": "assets/books-00ec6879.js",
+    "file": "assets/books-6abd4fa9.js",
     "imports": [
-      "_config-37966956.js",
-      "_reactivity.esm-bundler-ec77e152.js"
+      "_config-df2164b1.js",
+      "_reactivity.esm-bundler-9db843ea.js"
     ],
     "isEntry": true,
     "src": "resources/js/pages/books.js"

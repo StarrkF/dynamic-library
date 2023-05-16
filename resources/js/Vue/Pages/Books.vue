@@ -99,6 +99,7 @@ const deleteBook = (id) => {
 
 onMounted(() => {
     route.params.id ? filterParams.value.byListType = route.params.id : ''
+    route.params.type ? filterParams.value.byType = route.params.type : ''
     getBooks()
 })
 

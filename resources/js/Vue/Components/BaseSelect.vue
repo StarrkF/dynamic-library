@@ -15,6 +15,10 @@ const props = defineProps({
     options: {
         type: Array,
         default: () => []
+    },
+    emptyOption: {
+        type: Boolean,
+        default: true
     }
 })
 </script>
@@ -23,7 +27,7 @@ const props = defineProps({
     <div>
         <label>{{ label }}<span v-if="is_required" class="text-danger">*</span></label>
         <select :value="modelValue" class="form-select" @change="$emit('update:modelValue',$event.target.value)">
-            <option :value="null">Filtreyi Temizle</option>
+            <option v-if="emptyOption" :value="null">Filtreyi Temizle</option>
             <option v-for="option in options" :value="option.id">{{ option.name }}</option>
         </select>
     </div>

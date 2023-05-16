@@ -47,12 +47,12 @@ class Book extends Model
     public function scopeOrder($query)
     {
         if (request()->has('orderBy')) {
-            if(request('orderBy') == 'type') {
-                $query->whereHas('type', function($q) {
+            if (request('orderBy') == 'type') {
+                $query->whereHas('type', function ($q) {
                     $q->orderBy('name', request('orderType'));
                 });
             } else {
-                $query->orderBy(request('orderBy') , request('orderType'));
+                $query->orderBy(request('orderBy'), request('orderType'));
             }
         }
     }
@@ -74,7 +74,7 @@ class Book extends Model
             })
             ->when(request('search'), function ($q) {
                 $q->where('name', 'like', '%' . request('search') . '%')
-                    ->orWhere('author', 'like', '%' . request('search') . '%');
+                  ->orWhere('author', 'like', '%' . request('search') . '%');
             });
     }
 }

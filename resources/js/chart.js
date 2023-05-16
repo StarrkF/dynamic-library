@@ -53,4 +53,3 @@ var myChart = new Chart(ctx, {
   data: data,
   options: options,
 });
-

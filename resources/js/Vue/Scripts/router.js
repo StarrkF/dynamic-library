@@ -9,6 +9,11 @@ const router = createRouter({
             component: () => import('../pages/Home.vue')
         },
         {
+            path: '/books/type/:type?',
+            name: 'book-type',
+            component: () => import('../pages/Books.vue')
+        },
+        {
             path: '/books/:id?',
             name: 'books',
             component: () => import('../pages/Books.vue')

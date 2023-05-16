@@ -109,6 +109,37 @@ export default function useApi() {
         return result;
       }
 
+    function setChartOptions(chartType) {
+        const mdScreen = window.innerWidth >= 768
+        if(chartType == 'bar' || chartType == 'line') {
+            return {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                    x: {
+                        ticks: {
+                            display: mdScreen ? true : false,
+                            maxRotation: 40,
+                            minRotation: 40,
+                            autoSkip: false
+                        },
+                        barPercentage: 0.8,
+                        categoryPercentage: 0.9,
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        } else {
+            return {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        }
+
+    }
+
     return {
         index,
         show,
@@ -118,6 +149,7 @@ export default function useApi() {
         colorPallete,
         darkerColors,
         randomColor,
-        errors
+        errors,
+        setChartOptions
     }
 }
