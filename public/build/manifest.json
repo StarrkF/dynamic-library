@@ -1,13 +1,13 @@
 {
-  "_BaseInput-b2da0c75.js": {
-    "file": "assets/BaseInput-b2da0c75.js",
+  "_BaseInput-a90630f8.js": {
+    "file": "assets/BaseInput-a90630f8.js",
     "imports": [
       "resources/js/app.js",
       "_reactivity.esm-bundler-9db843ea.js"
     ]
   },
-  "_BaseSelect-6250de75.js": {
-    "file": "assets/BaseSelect-6250de75.js",
+  "_BaseSelect-21176813.js": {
+    "file": "assets/BaseSelect-21176813.js",
     "imports": [
       "resources/js/app.js",
       "_reactivity.esm-bundler-9db843ea.js"
@@ -45,22 +45,22 @@
     "css": [
       "assets/Books-142da45c.css"
     ],
-    "file": "assets/Books-5e7ad18d.js",
+    "file": "assets/Books-4aa2acbe.js",
     "imports": [
       "_config-df2164b1.js",
       "resources/js/app.js",
       "_reactivity.esm-bundler-9db843ea.js",
-      "_BaseInput-b2da0c75.js",
-      "_BaseSelect-6250de75.js"
+      "_BaseInput-a90630f8.js",
+      "_BaseSelect-21176813.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Vue/Pages/Books.vue"
   },
   "resources/js/Vue/Pages/Chart.vue": {
-    "file": "assets/Chart-955cdde2.js",
+    "file": "assets/Chart-6c91abbd.js",
     "imports": [
       "_config-df2164b1.js",
-      "_BaseSelect-6250de75.js",
+      "_BaseSelect-21176813.js",
       "resources/js/app.js",
       "_reactivity.esm-bundler-9db843ea.js"
     ],
@@ -75,7 +75,7 @@
     "css": [
       "assets/Home-1a592033.css"
     ],
-    "file": "assets/Home-ce821da0.js",
+    "file": "assets/Home-17085991.js",
     "imports": [
       "resources/js/app.js",
       "_reactivity.esm-bundler-9db843ea.js"
@@ -91,10 +91,10 @@
     "css": [
       "assets/Types-64e47305.css"
     ],
-    "file": "assets/Types-c09d424a.js",
+    "file": "assets/Types-5e853f08.js",
     "imports": [
       "_config-df2164b1.js",
-      "_BaseInput-b2da0c75.js",
+      "_BaseInput-a90630f8.js",
       "resources/js/app.js",
       "_reactivity.esm-bundler-9db843ea.js"
     ],
@@ -116,7 +116,7 @@
       "resources/js/Vue/Pages/Types.vue",
       "resources/js/Vue/Pages/Chart.vue"
     ],
-    "file": "assets/app-51e1db9d.js",
+    "file": "assets/app-ce1f0cfe.js",
     "imports": [
       "_reactivity.esm-bundler-9db843ea.js"
     ],
